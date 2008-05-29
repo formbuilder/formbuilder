@@ -1,0 +1,9 @@
+#!/bin/sh
+cd `dirname $0`/..
+for f in t/*.t
+do
+    echo "**** $f ****"
+    $f "$@"
+done
+rm -f cgisess*
+
