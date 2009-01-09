@@ -143,6 +143,7 @@ Currently included with B<FormBuilder> are several different locales:
     English (default)    en_US
     Danish               da_DK
     German/Deutsch       de_DE
+    Russian (UTF-8)      ru_RU
     Spanish/Espanol      es_ES
     Japanese             ja_JP
     Norwegian/Norvegian  no_NO
