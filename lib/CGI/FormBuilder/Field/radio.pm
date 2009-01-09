@@ -160,7 +160,7 @@ sub tag {
         # Each radio/checkbox gets a human thingy with <label> around it
         $tag .= htmltag('input', $attr);
         $tag .= $checkbox_table
-              ? (htmltag('/td')."\n    ".htmltag('td').$self->{_form}->font) : ' ';
+              ? (htmltag('/td')."\n    ".htmltag('td').$self->{_form}->font) : '&nbsp;';
         my $c = $self->{_form}->class('_option');
         $tag .= htmltag('label', for => $attr->{id}, class => $c)
               . ($self->cleanopts ? escapehtml($n) : $n)
