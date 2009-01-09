@@ -1282,6 +1282,14 @@ include the C<name> part:
 
     $form->field(name => 'email', size => '40');
 
+=item add_after_option => $html
+
+Adds the specified HTML code after each checkbox (or radio) option.
+
+=item add_before_option => $html
+
+Adds the specified HTML code before each checkbox (or radio) option.
+
 =item columns => 0 | $width
 
 If set and the field is of type 'checkbox' or 'radio', then the

@@ -68,7 +68,8 @@ our @OURATTR = qw(
     fieldattr fieldsubs fieldtype fieldname fieldopts fieldset fieldsets
     font force formname growable growname header idprefix inputname invalid
     javascript jsmessage jsname jsprefix jsfunc jshead jserror jsvalid keepextras
-    labels labelname lalign linebreaks message messages nameopts newline other othername
+    labels labelname lalign add_before_option add_after_option
+    linebreaks message messages nameopts newline other othername
     optgroups options override page pages pagename params render required
     reset resetname rowname selectname selectnum sessionidname sessionid
     smartness source sortopts static statename sticky stylesheet styleclass submit
