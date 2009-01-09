@@ -108,6 +108,7 @@ types are:
     Text    -  Text::Template
     TT2     -  Template Toolkit
     Fast    -  CGI::FastTemplate
+    CGI_SSI -  CGI::SSI
 
 In addition to one of these types, you can also specify a complete package name,
 in which case that module will be autoloaded and its C<new()> and C<render()>
@@ -192,7 +193,7 @@ the guts of one of the existing template engines and go from there.
 
 L<CGI::FormBuilder>, L<CGI::FormBuilder::Template::HTML>,
 L<CGI::FormBuilder::Template::Text>, L<CGI::FormBuilder::Template::TT2>,
-L<CGI::FormBuilder::Template::Fast>
+L<CGI::FormBuilder::Template::Fast>, L<CGI::FormBuilder::Template::CGI_SSI>
 
 =head1 REVISION
 
