@@ -808,6 +808,11 @@ sub statetags {
     my $smval = $self->{params}->param($smnam) + 1;
     push @html, htmltag('input', name => $smtag, value => $smval, type => 'hidden');
 
+    # get _submit
+    my $stnam = $self->submitname;
+    my $sttag = $self->{name} ? "${stnam}_$self->{name}" : $stnam;
+    push @html, htmltag('input', name => $sttag, type => 'hidden');
+
     # and how about _sessionid
     if (defined(my $sid = $self->sessionid)) {
         push @html, htmltag('input', name => $self->{sessionidname},
@@ -1090,14 +1095,14 @@ sub submits {
                     @pair = %{$subval};
                 }
                 my $v = @pair ? "'$pair[0]'" : "this.value";
-                push @oncl, (onclick => "this.form.$sn.value = $v;");
+                push @oncl, (onclick => "this.form.$sn.item(0).value = $v;");
                 $subval = $pair[1] if @pair;
             }
             my $si = $i > 1 ? "_$i" : '';  # number with second one
             push @submit, { type  => 'submit',
                             id    => "$self->{name}$sn$si",
                             class => $sc,
-                            name  => $sn, 
+#                             name  => $sn, 
                             value => $subval, @oncl };
             $i++;
         }
