@@ -1091,6 +1091,7 @@ sub submits {
                 }
                 my $v = @pair ? "'$pair[0]'" : "this.value";
                 push @oncl, (onclick => "this.form.$sn.value = $v;");
+                $subval = $pair[1] if @pair;
             }
             my $si = $i > 1 ? "_$i" : '';  # number with second one
             push @submit, { type  => 'submit',
