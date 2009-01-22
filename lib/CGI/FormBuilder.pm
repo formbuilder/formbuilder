@@ -1079,10 +1079,19 @@ sub submits {
     my $sc = $self->class($self->{buttonname});
     if (ref $self->{submit} eq 'ARRAY') {
         # multiple buttons + JavaScript - dynamically set the _submit value
-        my @oncl = $self->javascript
-                       ? (onclick => "this.form.$sn.value = this.value;") : ();
         my $i=1;
         for my $subval (autodata $self->{submit}) {
+            my @oncl;
+            if($self->javascript) {
+                my @pair;
+                if(ref $subval eq 'ARRAY') {
+                    @pair = @{$subval};
+                } elsif(ref $subval eq 'HASH') {
+                    @pair = %{$subval};
+                }
+                my $v = @pair ? "'$pair[0]'" : "this.value";
+                push @oncl, (onclick => "this.form.$sn.value = $v;");
+            }
             my $si = $i > 1 ? "_$i" : '';  # number with second one
             push @submit, { type  => 'submit',
                             id    => "$self->{name}$sn$si",

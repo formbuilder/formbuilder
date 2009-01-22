@@ -970,6 +970,12 @@ in the variable C<$clicked> above. This allows nice conditionality:
         # just process the form
     }
 
+If an element of the passed array is itself a (two-element) array
+or an (one-key) hash then the first value of the array or the key of the hash is
+taken as the ID returned by C<submitted()> function and the second value
+is taken as the label for the button. WARNING: This works properly only
+when JavaScript is enabled!
+
 See the L</"EXAMPLES"> section for more details.
 
 =item styleclass => $string
