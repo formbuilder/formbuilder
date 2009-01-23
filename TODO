@@ -1,0 +1,8 @@
+- Ability to prevent submitting the form by pressing Enter (e.g. in a textfield).
+  I think this can be done with JS (handling onsubmit).
+  Alternatively we could handle keypress with the value 13 (but this may be less
+  portable).
+  See also
+  http://kreotekdev.wordpress.com/2007/11/16/disabling-the-enter-key-on-forms-using-javascript/
+
+- Loops with templates using CGI::SSI module.
