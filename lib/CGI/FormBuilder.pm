@@ -1084,6 +1084,8 @@ sub submits {
     my @submit = ();
     my $sn = $self->{submitname};
     my $sc = $self->class($self->{buttonname});
+    my $stnam = $self->submitname;
+    my $sttag = $self->{name} ? "${stnam}_$self->{name}" : $stnam;
     if (ref $self->{submit} eq 'ARRAY') {
         # multiple buttons + JavaScript - dynamically set the _submit value
         my $i=1;
@@ -1097,7 +1099,7 @@ sub submits {
             }
             if($self->javascript) {
                 my $v = @pair ? "'$pair[0]'" : "this.value";
-                push @oncl, (onclick => "this.form.$sn.item(0).value = $v;");
+                push @oncl, (onclick => "document.getElementById('$sttag').value = $v;");
             }
             $subval = $pair[1] if @pair;
             my $si = $i > 1 ? "_$i" : '';  # number with second one
