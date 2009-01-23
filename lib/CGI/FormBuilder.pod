@@ -501,6 +501,12 @@ See L<CGI::FormBuilder::Messages> for more details.
 If set to 1, the module spits copious debugging info to STDERR.
 If set to 2, it spits out even more gunk. 3 is too much. Defaults to 0.
 
+=item disable_enter => 0 | 1
+
+If set to 0 (default), Enter key pressed in a text field submits the form.
+If set to 1, Enter key pressed in a text field does not submit the
+form.
+
 =item fields => \@array | \%hash
 
 As shown above, the C<fields> option takes an arrayref of fields to use

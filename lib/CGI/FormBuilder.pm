@@ -930,6 +930,7 @@ sub script {
       
     # skip out if we have nothing useful
     return '' unless $jsfunc || $jsmisc || $jshead;
+    $self->{NON_EMPTY_SCRIPT} = 1; # FIXME: Should not be form param
 
     # prefix with opening code
     if ($jsfunc) {
@@ -972,7 +973,7 @@ EOJS
         # Unfortunately, this introduces the requirement that script()
         # must be generated/called before start() in our template engines.
         # Fortunately, that usually happens anyways. Still sucks.
-        $self->{onsubmit} ||= "return $jsname(this);";
+        $self->{onsubmit} ||= "return $jsname(this);" unless $self->disable_enter;
     }
 
     # set <script> now to the expanded javascript
@@ -1099,12 +1100,21 @@ sub submits {
             }
             if($self->javascript) {
                 my $v = @pair ? "'$pair[0]'" : "this.value";
-                push @oncl, (onclick => "document.getElementById('$sttag').value = $v;");
+                my $h = "document.getElementById('$sttag').value = $v;";
+                if($self->disable_enter) {
+                    if($self->{NON_EMPTY_SCRIPT}) {
+                        my $jsname = $self->jsname;
+                        $h .= " if($jsname(this.form)) this.form.submit();";
+                    } else {
+                        $h .= " this.form.submit();";
+                    }
+                }
+                push @oncl, (onclick => $h);
             }
             $subval = $pair[1] if @pair;
             my $si = $i > 1 ? "_$i" : '';  # number with second one
             my @jc = $self->javascript ? () : (name  => $sn);
-            push @submit, { type  => 'submit',
+            push @submit, { type  => ($self->disable_enter ? 'button' : 'submit'),
                             id    => "$self->{name}$sn$si",
                             class => $sc,
                             @jc,

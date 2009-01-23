@@ -64,12 +64,12 @@ our %TAGNAMES = ();     # holds translated tag names (experimental)
 # module doesn't go out of date when the HTML spec changes next week.
 our @OURATTR = qw(
     add_before_option add_after_option attr autofill autofillshow body bodyname
-    buttonname caller checknum cleanopts  columns cookies comment debug delete
-    dtd errorname extraname fields fieldattr fieldsubs fieldtype fieldname
+    buttonname caller checknum cleanopts columns cookies comment debug delete
+    disable_enter dtd errorname extraname fields fieldattr fieldsubs fieldtype fieldname
     fieldopts fieldset fieldsets font force formname growable growname header
     idprefix inputname invalid javascript jsmessage jsname jsprefix jsfunc jshead
     jserror jsvalid keepextras labels labelname lalign 
-    linebreaks message messages nameopts newline other othername
+    linebreaks message messages nameopts newline NON_EMPTY_SCRIPT other othername
     optgroups options override page pages pagename params render required
     reset resetname rowname selectname selectnum sessionidname sessionid
     smartness source sortopts static statename sticky stylesheet styleclass submit
