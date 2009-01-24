@@ -106,6 +106,7 @@ our @CARP_NOT = qw(
     CGI::FormBuilder::Template::HTML
     CGI::FormBuilder::Template::TT2
     CGI::FormBuilder::Template::Text
+    CGI::FormBuilder::Template::CGI_SSI
     CGI::FormBuilder::Util
 );
 

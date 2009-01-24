@@ -256,7 +256,7 @@ See the documentation in L<CGI::FormBuilder> for more details.
 
 L<CGI::FormBuilder>, L<CGI::FormBuilder::Template::HTML>,
 L<CGI::FormBuilder::Template::Text>, L<CGI::FormBuilder::Template::TT2>,
-L<CGI::FormBuilder::Template::Fast>
+L<CGI::FormBuilder::Template::Fast>, L<CGI::FormBuilder::Template::CGI_SSI>
 
 =head1 REVISION
 
