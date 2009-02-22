@@ -34,7 +34,7 @@ function validate (form) {
 <p>1 error(s) were encountered with your submission. Please correct the fields <span class="fb_invalid">highlighted</span> below.</p>
 <form action="TEST" class="fb_form" method="post" onsubmit="return validate(this);">
 <div class="fb_state"><b:input b:name="_submitted" b:value="1" type="hidden">
-<input id="_submit" name="_submit" type="hidden" /></div>
+<b:input b:name="_submit" type="hidden"></div>
 <div class="fb">
 <div>
   <div class="fb_label"><span class="fb_required">Full Name</span></div>
@@ -83,7 +83,7 @@ function validate (form) {
   </div></div>
 </div>
 <div>
-  <div class="fb_submit" colspan="2"><b:input b:name="_reset" b:value="Showme" class="fb_button" id="_reset" type="reset"><b:input b:name="_submit" b:value="Update" class="fb_button" id="_submit" onclick="this.form._submit.value = this.value;" type="submit"><b:input b:name="_submit" b:value="Delete" class="fb_button" id="_submit_2" onclick="this.form._submit.value = this.value;" type="submit"></div>
+  <div class="fb_submit" colspan="2"><b:input b:name="_reset" b:value="Showme" class="fb_button" id="_reset" type="reset"><b:input b:value="Update" class="fb_button" id="_submit" onclick="document.getElementById('_submit').value = this.value;" type="submit"><b:input b:value="Delete" class="fb_button" id="_submit_2" onclick="document.getElementById('_submit').value = this.value;" type="submit"></div>
 </div>
 </div>
 </form>

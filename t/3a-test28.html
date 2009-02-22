@@ -83,7 +83,7 @@ Choose just one, even if you have more than one</td>
   </table></td>
 </tr>
 <tr>
-  <td class="fb_submit" colspan="2"><input class="fb_button" id="_reset" name="_reset" type="reset" value="Showme" /><input class="fb_button" id="_submit" name="_submit" onclick="this.form._submit.value = this.value;" type="submit" value="Update" /><input class="fb_button" id="_submit_2" name="_submit" onclick="this.form._submit.value = this.value;" type="submit" value="Delete" /></td>
+  <td class="fb_submit" colspan="2"><input class="fb_button" id="_reset" name="_reset" type="reset" value="Showme" /><input class="fb_button" id="_submit" onclick="document.getElementById('_submit').value = this.value;" type="submit" value="Update" /><input class="fb_button" id="_submit_2" onclick="document.getElementById('_submit').value = this.value;" type="submit" value="Delete" /></td>
 </tr>
 </table>
 </form>

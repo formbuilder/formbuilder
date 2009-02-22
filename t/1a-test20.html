@@ -177,7 +177,7 @@ function validate_order (form) {
   <td class="shop_field" id="order_expiration_field"><input class="shop_input" id="expiration" name="expiration" type="text" /></td>
 </tr>
 <tr id="order_submit_row">
-  <td class="shop_submit" colspan="2" id="order_submit_field"><input class="shop_button" id="order_submit" name="_submit" onclick="this.form._submit.value = this.value;" type="submit" value="Place Order" /><input class="shop_button" id="order_submit_2" name="_submit" onclick="this.form._submit.value = this.value;" type="submit" value="Cancel" /></td>
+  <td class="shop_submit" colspan="2" id="order_submit_field"><input class="shop_button" id="order_submit" onclick="document.getElementById('_submit_order').value = this.value;" type="submit" value="Place Order" /><input class="shop_button" id="order_submit_2" onclick="document.getElementById('_submit_order').value = this.value;" type="submit" value="Cancel" /></td>
 </tr>
 </table>
 </form>

@@ -52,5 +52,5 @@ Enter your name: <input id="name" name="name" type="text" />
     
 </select>
 FYI, your dress size is (unknown)<br>
- <input id="_submit" name="_submit" onclick="this.form._submit.value = this.value;" type="submit" value="Update" /><input id="_submit_2" name="_submit" onclick="this.form._submit.value = this.value;" type="submit" value="Delete" />
+ <input id="_submit" onclick="document.getElementById('_submit').value = this.value;" type="submit" value="Update" /><input id="_submit_2" onclick="document.getElementById('_submit').value = this.value;" type="submit" value="Delete" />
 </form>
