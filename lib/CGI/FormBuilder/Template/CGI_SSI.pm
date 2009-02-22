@@ -130,13 +130,13 @@ sub render {
     # template output
     SWITCH: {
         if($self->{virtual}) {
-            return $form->header . $self->engine->include(virtual=>$self->{virtual});
+            return $self->engine->include(virtual=>$self->{virtual});
         }
         if($self->{file}) {
-            return $form->header . $self->engine->include(file=>$self->{file});
+            return $self->engine->include(file=>$self->{file});
         }
         if($self->{string}) {
-            return $form->header . $self->engine->process($self->{string});
+            return $self->engine->process($self->{string});
         }
     }
 }
