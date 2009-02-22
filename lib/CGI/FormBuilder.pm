@@ -1517,7 +1517,7 @@ sub render {
         return &{$self->{template}}($self);
     } elsif (UNIVERSAL::can($self->{template}, 'render')) {
         # instantiated object
-        return $self->{template}->render($self);
+        return $self->{template}->render($self->{prepare});
     } elsif ($ref) {
         puke "Unsupported operand to 'template' option - must be \\%hash, \\&sub, or \$object w/ render()";
     }
