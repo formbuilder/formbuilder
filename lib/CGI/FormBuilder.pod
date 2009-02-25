@@ -982,6 +982,10 @@ taken as the ID returned by C<submitted()> function and the second value
 is taken as the label for the button. WARNING: This works properly only
 when JavaScript is enabled!
 
+What will be the ID and name of a submit button in the case if the
+element of the passed array is itself a (two-element) array or an (one-key)
+hash, is undefined and it may change in a future version of FormBuilder.
+
 See the L</"EXAMPLES"> section for more details.
 
 =item styleclass => $string
