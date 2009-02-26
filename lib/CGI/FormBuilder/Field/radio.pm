@@ -161,7 +161,7 @@ sub tag {
         $tag .= $self->add_before_option;
         $tag .= htmltag('input', $attr);
         $tag .= $checkbox_table
-              ? (htmltag('/td')."\n    ".htmltag('td').$self->{_form}->font) : '&nbsp;';
+              ? (htmltag('/td')."\n    ".htmltag('td').$self->{_form}->font) : ' ';
         my $c = $self->{_form}->class('_option');
         $tag .= htmltag('label', for => $attr->{id}, class => $c)
               . ($self->cleanopts ? escapehtml($n) : $n)
