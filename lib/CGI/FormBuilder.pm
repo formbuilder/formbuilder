@@ -1115,7 +1115,7 @@ sub submits {
             my $si = $i > 1 ? "_$i" : '';  # number with second one
             my @jc = $self->javascript ? () : (name  => $sn);
             push @submit, { type  => ($self->disable_enter ? 'button' : 'submit'),
-                            id    => "$self->{name}$sn$si",
+                            (@pair ? (id => $pair[0]) : ()),
                             class => $sc,
                             @jc,
                             value => $subval, @oncl };

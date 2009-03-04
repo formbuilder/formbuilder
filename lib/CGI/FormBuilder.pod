@@ -982,9 +982,10 @@ taken as the ID returned by C<submitted()> function and the second value
 is taken as the label for the button. WARNING: This works properly only
 when JavaScript is enabled!
 
-What will be the ID and name of a submit button in the case if the
-element of the passed array is itself a (two-element) array or an (one-key)
-hash, is undefined and it may change in a future version of FormBuilder.
+In this case the first element of the two element array (or the key of the
+one-key hash) becomes the ID of the submit button. The old behavior when to
+submit buttons are automatically assigned IDs C<_submit>, C<_submit_2> etc.
+is not supported anymore.
 
 See the L</"EXAMPLES"> section for more details.
 
