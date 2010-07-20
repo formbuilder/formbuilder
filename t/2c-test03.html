@@ -39,7 +39,6 @@ function validate (form) {
     </head>
     <body>
       <form action="TEST" method="get" onsubmit="return validate(this);"><input id="_submitted" name="_submitted" type="hidden" value="1" />
-<input id="_submit" name="_submit" type="hidden" />
       <table>
         
         <tr valign="top">
@@ -106,7 +105,7 @@ function validate (form) {
         
         <tr>
           <td colspan="2" align="center">
-            <input onclick="document.getElementById('_submit').value = this.value;" type="submit" value="Update" /><input onclick="document.getElementById('_submit').value = this.value;" type="submit" value="Delete" /> 
+            <input id="_submit" name="_submit" onclick="this.form._submit.value = this.value;" type="submit" value="Update" /><input id="_submit_2" name="_submit" onclick="this.form._submit.value = this.value;" type="submit" value="Delete" /> 
           </td>
         </tr>
       </table>

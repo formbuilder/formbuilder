@@ -28,7 +28,7 @@ no  warnings 'uninitialized';
 
 use CGI::FormBuilder::Util;
 
-our $REVISION = do { (my $r='$Revision: 97 $') =~ s/\D+//g; $r };
+our $REVISION = do { (my $r='$Revision: 100 $') =~ s/\D+//g; $r };
 our $VERSION = '3.0501';
 our $AUTOLOAD;
 
@@ -143,7 +143,6 @@ Currently included with B<FormBuilder> are several different locales:
     English (default)    en_US
     Danish               da_DK
     German/Deutsch       de_DE
-    Russian (UTF-8)      ru_RU
     Spanish/Espanol      es_ES
     Japanese             ja_JP
     Norwegian/Norvegian  no_NO
@@ -288,7 +287,7 @@ L<CGI::FormBuilder>
 
 =head1 REVISION
 
-$Id: Messages.pm 97 2007-02-06 17:10:39Z nwiger $
+$Id: Messages.pm 100 2007-03-02 18:13:13Z nwiger $
 
 =head1 AUTHOR
 

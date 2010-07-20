@@ -38,7 +38,6 @@ function validate (form) {
 </script>
 <p>
 <form action="TEST" method="get" onsubmit="return validate(this);"><input id="_submitted" name="_submitted" type="hidden" value="1" />
-<input id="_submit" name="_submit" type="hidden" />
 Enter your name: <input id="name" name="name" type="text" />
 <select name="color" multiple>
     
@@ -52,5 +51,5 @@ Enter your name: <input id="name" name="name" type="text" />
     
 </select>
 FYI, your dress size is (unknown)<br>
- <input onclick="document.getElementById('_submit').value = this.value;" type="submit" value="Update" /><input onclick="document.getElementById('_submit').value = this.value;" type="submit" value="Delete" />
+ <input id="_submit" name="_submit" onclick="this.form._submit.value = this.value;" type="submit" value="Update" /><input id="_submit_2" name="_submit" onclick="this.form._submit.value = this.value;" type="submit" value="Delete" />
 </form>

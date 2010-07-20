@@ -25,7 +25,6 @@ function validate (form) {
 //-->
 </script>
 <form action="TEST" method="get" onsubmit="return validate(this);"><input id="_submitted" name="_submitted" type="hidden" value="1" />
-<input id="_submit" name="_submit" type="hidden" />
 <tr class="required invalid"><th>Name</th><td><input id="name" name="name" type="text" />  </td></tr>
 <tr class="optional invalid"><th>Best Color</th><td><input checked="checked" id="color_red" name="color" type="radio" value="red" /> <label for="color_red">red</label>
 <input id="color_green" name="color" type="radio" value="green" /> <label for="color_green">green</label>
@@ -36,5 +35,5 @@ function validate (form) {
   </td></tr>
 <tr class="optional invalid"><th>Size</th><td><input id="size" name="size" type="text" value="42" />  </td></tr>
 
-<input name="_submit" type="submit" value="No esta una button del resetto" />
+<input id="_submit" name="_submit" type="submit" value="No esta una button del resetto" />
 

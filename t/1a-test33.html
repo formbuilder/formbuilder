@@ -24,8 +24,7 @@ function validate_parts (form) {
 <noscript><span class="fb_invalid">Please enable Javascript or use a newer browser.</span></noscript>
 <p>Fields that are <span class="fb_required">highlighted</span> are required.</p>
 <form action="TEST" class="fb_form" id="parts" method="post" name="parts" onsubmit="return validate_parts(this);">
-<div class="fb_state" id="parts_state"><input id="_submitted_parts" name="_submitted_parts" type="hidden" value="1" />
-<input id="_submit_parts" name="_submit_parts" type="hidden" /></div>
+<div class="fb_state" id="parts_state"><input id="_submitted_parts" name="_submitted_parts" type="hidden" value="1" /></div>
 <div class="fb_extra" id="parts_extra"><input id="replacement" name="replacement" type="hidden" value="TRUE" />
 <input id="action" name="action" type="hidden" value="Unsubscribe" />
 <input id="name" name="name" type="hidden" value="Pete Peteson" />
@@ -61,9 +60,9 @@ function validate_parts (form) {
 </div>
 <div class="fb_controls" id="parts_controls">
 <div id="parts_submit_row">
-  <div class="fb_submit"><input class="fb_button" onclick="document.getElementById('_submit_parts').value = this.value;" type="submit" value="Update" /></div>
-  <div class="fb_submit"><input class="fb_button" onclick="document.getElementById('_submit_parts').value = this.value;" type="submit" value="Delete" /></div>
-  <div class="fb_submit"><input class="fb_button" onclick="document.getElementById('_submit_parts').value = this.value;" type="submit" value="Cancel" /></div>
+  <div class="fb_submit"><input class="fb_button" id="parts_submit" name="_submit" onclick="this.form._submit.value = this.value;" type="submit" value="Update" /></div>
+  <div class="fb_submit"><input class="fb_button" id="parts_submit_2" name="_submit" onclick="this.form._submit.value = this.value;" type="submit" value="Delete" /></div>
+  <div class="fb_submit"><input class="fb_button" id="parts_submit_3" name="_submit" onclick="this.form._submit.value = this.value;" type="submit" value="Cancel" /></div>
 </div>
 </div>
 </form>

@@ -27,7 +27,6 @@ function validate (form) {
     </head>
     <body>
       <form action="TEST" method="get" onsubmit="return validate(this);"><input id="_submitted" name="_submitted" type="hidden" value="1" />
-<input id="_submit" name="_submit" type="hidden" />
       <table>
         
         <tr valign="top">
@@ -81,7 +80,7 @@ function validate (form) {
         
         <tr>
           <td colspan="2" align="center">
-            <input name="_submit" type="submit" value="No esta una button del resetto" /> 
+            <input id="_submit" name="_submit" type="submit" value="No esta una button del resetto" /> 
           </td>
         </tr>
       </table>

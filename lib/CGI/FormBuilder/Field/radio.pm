@@ -20,7 +20,7 @@ use CGI::FormBuilder::Util;
 use CGI::FormBuilder::Field;
 use base 'CGI::FormBuilder::Field';
 
-our $REVISION = do { (my $r='$Revision: 97 $') =~ s/\D+//g; $r };
+our $REVISION = do { (my $r='$Revision: 100 $') =~ s/\D+//g; $r };
 our $VERSION = '3.0501';
 
 sub script {
@@ -158,7 +158,6 @@ sub tag {
         }
 
         # Each radio/checkbox gets a human thingy with <label> around it
-        $tag .= $self->add_before_option;
         $tag .= htmltag('input', $attr);
         $tag .= $checkbox_table
               ? (htmltag('/td')."\n    ".htmltag('td').$self->{_form}->font) : ' ';
@@ -166,7 +165,6 @@ sub tag {
         $tag .= htmltag('label', for => $attr->{id}, class => $c)
               . ($self->cleanopts ? escapehtml($n) : $n)
               . htmltag('/label');
-        $tag .= $self->add_after_option;
 
         $tag .= '<br />' if $self->linebreaks;
 

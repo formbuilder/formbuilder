@@ -26,7 +26,6 @@ function validate (form) {
 </script>
 <p>
 <form action="TEST" method="get" onsubmit="return validate(this);"><input id="_submitted" name="_submitted" type="hidden" value="1" />
-<input id="_submit" name="_submit" type="hidden" />
 Enter your name: <input id="name" name="name" type="text" />
 Select your Best Color: <select name="color" multiple>
   <option selected="selected" value="red">red</option>
@@ -36,5 +35,5 @@ Select your Best Color: <select name="color" multiple>
 </select>
 Sex = <radio name="sex" value="M">Male<br><radio name="sex" value="F">Female<br>
 FYI, your dress size is 42<br>
-<input name="_submit" type="submit" value="No esta una button del resetto" />
+<input id="_submit" name="_submit" type="submit" value="No esta una button del resetto" />
 </form>

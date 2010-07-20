@@ -42,7 +42,7 @@ require File::Basename;
 
 # Authoritative version information actually lives here
 our $VERSION = '3.0501';
-our $REVISION = do { (my $r='$Revision: 97 $') =~ s/\D+//g; $r };
+our $REVISION = do { (my $r='$Revision: 100 $') =~ s/\D+//g; $r };
 
 # Place functions you want to export by default in the
 # @EXPORT array. Any other functions can be requested
@@ -63,13 +63,12 @@ our %TAGNAMES = ();     # holds translated tag names (experimental)
 # specified in the generation of HTML tags, and also means that this
 # module doesn't go out of date when the HTML spec changes next week.
 our @OURATTR = qw(
-    add_before_option add_after_option attr autofill autofillshow body bodyname
-    buttonname caller checknum cleanopts columns cookies comment debug delete
-    disable_enter dtd errorname extraname fields fieldattr fieldsubs fieldtype fieldname
-    fieldopts fieldset fieldsets font force formname growable growname header
-    idprefix inputname invalid javascript jsmessage jsname jsprefix jsfunc jshead
-    jserror jsvalid keepextras labels labelname lalign 
-    linebreaks message messages nameopts newline NON_EMPTY_SCRIPT other othername
+    attr autofill autofillshow body bodyname buttonname caller checknum cleanopts 
+    columns cookies comment debug delete dtd errorname extraname fields
+    fieldattr fieldsubs fieldtype fieldname fieldopts fieldset fieldsets
+    font force formname growable growname header idprefix inputname invalid
+    javascript jsmessage jsname jsprefix jsfunc jshead jserror jsvalid keepextras
+    labels labelname lalign linebreaks message messages nameopts newline other othername
     optgroups options override page pages pagename params render required
     reset resetname rowname selectname selectnum sessionidname sessionid
     smartness source sortopts static statename sticky stylesheet styleclass submit
@@ -106,7 +105,6 @@ our @CARP_NOT = qw(
     CGI::FormBuilder::Template::HTML
     CGI::FormBuilder::Template::TT2
     CGI::FormBuilder::Template::Text
-    CGI::FormBuilder::Template::CGI_SSI
     CGI::FormBuilder::Util
 );
 
@@ -524,7 +522,7 @@ L<CGI::FormBuilder>
 
 =head1 REVISION
 
-$Id: Util.pm 97 2007-02-06 17:10:39Z nwiger $
+$Id: Util.pm 100 2007-03-02 18:13:13Z nwiger $
 
 =head1 AUTHOR
 

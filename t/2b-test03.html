@@ -38,7 +38,6 @@ function validate (form) {
 </script>
 <p>
 <form action="TEST" method="get" onsubmit="return validate(this);"><input id="_submitted" name="_submitted" type="hidden" value="1" />
-<input id="_submit" name="_submit" type="hidden" />
 Enter your name: <input id="name" name="name" type="text" />
 Select your Color: <select name="color" multiple>
   <b><option VALUE="red">1</option></b>
@@ -49,5 +48,5 @@ Select your Color: <select name="color" multiple>
 </select>
 glass EYE fucker = <radio name="sex" value="1">2<br><radio name="sex" value="3">4<br><radio name="sex" value="5">6<br>
 FYI, your dress size is (unknown)<br>
-<input onclick="document.getElementById('_submit').value = this.value;" type="submit" value="Update" /><input onclick="document.getElementById('_submit').value = this.value;" type="submit" value="Delete" />
+<input id="_submit" name="_submit" onclick="this.form._submit.value = this.value;" type="submit" value="Update" /><input id="_submit_2" name="_submit" onclick="this.form._submit.value = this.value;" type="submit" value="Delete" />
 </form>

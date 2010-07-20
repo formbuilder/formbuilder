@@ -33,8 +33,7 @@ function validate (form) {
 <noscript><span class="fb_invalid">Please enable Javascript or use a newer browser.</span></noscript>
 <p>1 error(s) were encountered with your submission. Please correct the fields <span class="fb_invalid">highlighted</span> below.</p>
 <form action="TEST" class="fb_form" method="post" onsubmit="return validate(this);">
-<div class="fb_state"><input id="_submitted" name="_submitted" type="hidden" value="1" />
-<input id="_submit" name="_submit" type="hidden" /></div>
+<div class="fb_state"><input id="_submitted" name="_submitted" type="hidden" value="1" /></div>
 <table class="fb">
 <tr>
   <td class="fb_label"><span class="fb_required">Full Name</span></td>
@@ -83,7 +82,7 @@ function validate (form) {
   </table></td>
 </tr>
 <tr>
-  <td class="fb_submit" colspan="2"><input class="fb_button" id="_reset" name="_reset" type="reset" value="Showme" /><input class="fb_button" onclick="document.getElementById('_submit').value = this.value;" type="submit" value="Update" /><input class="fb_button" onclick="document.getElementById('_submit').value = this.value;" type="submit" value="Delete" /></td>
+  <td class="fb_submit" colspan="2"><input class="fb_button" id="_reset" name="_reset" type="reset" value="Showme" /><input class="fb_button" id="_submit" name="_submit" onclick="this.form._submit.value = this.value;" type="submit" value="Update" /><input class="fb_button" id="_submit_2" name="_submit" onclick="this.form._submit.value = this.value;" type="submit" value="Delete" /></td>
 </tr>
 </table>
 </form>

@@ -38,8 +38,7 @@ function validate (form) {
 <noscript><font color="#cc0000"><b>Please enable Javascript or use a newer browser.</b></font></noscript>
 <p>Fields that are <b>highlighted</b> are required.</p>
 <form action="TEST" method="get" onsubmit="return validate(this);">
-<div><input id="_submitted" name="_submitted" type="hidden" value="1" />
-<input id="_submit" name="_submit" type="hidden" /></div>
+<div><input id="_submitted" name="_submitted" type="hidden" value="1" /></div>
 <table>
 <tr valign="top">
   <td><b>Name</b></td>
@@ -54,7 +53,7 @@ function validate (form) {
   <td><input id="user" name="user" type="text" value="pete" /></td>
 </tr>
 <tr valign="top">
-  <td align="center" colspan="2"><input name="_submit" type="submit" value="Submit" /></td>
+  <td align="center" colspan="2"><input id="_submit" name="_submit" type="submit" value="Submit" /></td>
 </tr>
 </table>
 </form>

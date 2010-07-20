@@ -19,7 +19,7 @@ use CGI::FormBuilder::Field;
 use CGI::FormBuilder::Messages;
 
 our $VERSION = '3.0501';
-our $REVISION = do { (my $r='$Revision: 97 $') =~ s/\D+//g; $r };
+our $REVISION = do { (my $r='$Revision: 100 $') =~ s/\D+//g; $r };
 our $AUTOLOAD;
 
 # Default options for FormBuilder
@@ -808,13 +808,6 @@ sub statetags {
     my $smval = $self->{params}->param($smnam) + 1;
     push @html, htmltag('input', name => $smtag, value => $smval, type => 'hidden');
 
-    # get _submit
-    if($self->javascript) {
-      my $stnam = $self->submitname;
-      my $sttag = $self->{name} ? "${stnam}_$self->{name}" : $stnam;
-      push @html, htmltag('input', name => $sttag, type => 'hidden');
-    }
-
     # and how about _sessionid
     if (defined(my $sid = $self->sessionid)) {
         push @html, htmltag('input', name => $self->{sessionidname},
@@ -930,7 +923,6 @@ sub script {
       
     # skip out if we have nothing useful
     return '' unless $jsfunc || $jsmisc || $jshead;
-    $self->{NON_EMPTY_SCRIPT} = 1; # FIXME: Should not be form param
 
     # prefix with opening code
     if ($jsfunc) {
@@ -973,7 +965,7 @@ EOJS
         # Unfortunately, this introduces the requirement that script()
         # must be generated/called before start() in our template engines.
         # Fortunately, that usually happens anyways. Still sucks.
-        $self->{onsubmit} ||= "return $jsname(this);" unless $self->disable_enter;
+        $self->{onsubmit} ||= "return $jsname(this);";
     }
 
     # set <script> now to the expanded javascript
@@ -1085,39 +1077,17 @@ sub submits {
     my @submit = ();
     my $sn = $self->{submitname};
     my $sc = $self->class($self->{buttonname});
-    my $stnam = $self->submitname;
-    my $sttag = $self->{name} ? "${stnam}_$self->{name}" : $stnam;
     if (ref $self->{submit} eq 'ARRAY') {
         # multiple buttons + JavaScript - dynamically set the _submit value
+        my @oncl = $self->javascript
+                       ? (onclick => "this.form.$sn.value = this.value;") : ();
         my $i=1;
         for my $subval (autodata $self->{submit}) {
-            my @oncl;
-            my @pair;
-            if(ref $subval eq 'ARRAY') {
-                @pair = @{$subval};
-            } elsif(ref $subval eq 'HASH') {
-                @pair = %{$subval};
-            }
-            if($self->javascript) {
-                my $v = @pair ? "'$pair[0]'" : "this.value";
-                my $h = "document.getElementById('$sttag').value = $v;";
-                if($self->disable_enter) {
-                    if($self->{NON_EMPTY_SCRIPT}) {
-                        my $jsname = $self->jsname;
-                        $h .= " if($jsname(this.form)) this.form.submit();";
-                    } else {
-                        $h .= " this.form.submit();";
-                    }
-                }
-                push @oncl, (onclick => $h);
-            }
-            $subval = $pair[1] if @pair;
             my $si = $i > 1 ? "_$i" : '';  # number with second one
-            my @jc = $self->javascript ? () : (name  => $sn);
-            push @submit, { type  => ($self->disable_enter ? 'button' : 'submit'),
-                            (@pair ? (id => $pair[0]) : ()),
+            push @submit, { type  => 'submit',
+                            id    => "$self->{name}$sn$si",
                             class => $sc,
-                            @jc,
+                            name  => $sn, 
                             value => $subval, @oncl };
             $i++;
         }
@@ -1517,7 +1487,7 @@ sub render {
         return &{$self->{template}}($self);
     } elsif (UNIVERSAL::can($self->{template}, 'render')) {
         # instantiated object
-        return $self->{template}->render($self->{prepare});
+        return $self->{template}->render($self);
     } elsif ($ref) {
         puke "Unsupported operand to 'template' option - must be \\%hash, \\&sub, or \$object w/ render()";
     }

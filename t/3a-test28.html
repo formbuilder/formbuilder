@@ -33,7 +33,6 @@ function validate (form) {
 <p>1 error(s) were encountered with your submission. Please correct the fields <span class="fb_invalid">highlighted</span> below.</p>
 <form action="TEST" method="post" onsubmit="return validate(this);">
 <input id="_submitted" name="_submitted" type="hidden" value="1" />
-<input id="_submit" name="_submit" type="hidden" />
 <table class="fb">
 <tr>
   <td class="fb_label"><span class="fb_required">Full Name</span></td>
@@ -83,7 +82,7 @@ Choose just one, even if you have more than one</td>
   </table></td>
 </tr>
 <tr>
-  <td class="fb_submit" colspan="2"><input class="fb_button" id="_reset" name="_reset" type="reset" value="Showme" /><input class="fb_button" id="_submit" onclick="document.getElementById('_submit').value = this.value;" type="submit" value="Update" /><input class="fb_button" onclick="document.getElementById('_submit').value = this.value;" type="submit" value="Delete" /></td>
+  <td class="fb_submit" colspan="2"><input class="fb_button" id="_reset" name="_reset" type="reset" value="Showme" /><input class="fb_button" id="_submit" name="_submit" onclick="this.form._submit.value = this.value;" type="submit" value="Update" /><input class="fb_button" id="_submit_2" name="_submit" onclick="this.form._submit.value = this.value;" type="submit" value="Delete" /></td>
 </tr>
 </table>
 </form>

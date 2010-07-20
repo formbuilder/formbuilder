@@ -501,12 +501,6 @@ See L<CGI::FormBuilder::Messages> for more details.
 If set to 1, the module spits copious debugging info to STDERR.
 If set to 2, it spits out even more gunk. 3 is too much. Defaults to 0.
 
-=item disable_enter => 0 | 1
-
-If set to 0 (default), Enter key pressed in a text field submits the form.
-If set to 1, Enter key pressed in a text field does not submit the
-form.
-
 =item fields => \@array | \%hash
 
 As shown above, the C<fields> option takes an arrayref of fields to use
@@ -976,17 +970,6 @@ in the variable C<$clicked> above. This allows nice conditionality:
         # just process the form
     }
 
-If an element of the passed array is itself a (two-element) array
-or an (one-key) hash then the first value of the array or the key of the hash is
-taken as the ID returned by C<submitted()> function and the second value
-is taken as the label for the button. WARNING: This works properly only
-when JavaScript is enabled!
-
-In this case the first element of the two element array (or the key of the
-one-key hash) becomes the ID of the submit button. The old behavior when to
-submit buttons are automatically assigned IDs C<_submit>, C<_submit_2> etc.
-is not supported anymore.
-
 See the L</"EXAMPLES"> section for more details.
 
 =item styleclass => $string
@@ -1099,27 +1082,25 @@ By default, the C<validate> option also toggles each field to make
 it required. However, you can use the C<required> option to change
 this, see it for more details.
 
-Let's look at a concrete example.  Note that the javascript
-validation is a negative match, while the perl validation
-is a positive match.
+Let's look at a concrete example:
 
     my $form = CGI::FormBuilder->new(
-        fields => [qw(
-            username    password    confirm_password
-            first_name  last_name   email
-        )],
-        validate => {
-            username   => [qw(nate jim bob)],
-            first_name => '/^\w+$/',    # note the 
-            last_name  => '/^\w+$/',    # single quotes!
-            email      => 'EMAIL',
-            password   => \&check_password,
-            confirm_password => {
-                javascript => '!= form.password.value',       # neg
-                perl       => 'eq $form->field("password")',  # pos
-            },
-        },
-    );
+                    fields => [
+                        qw(username password confirm_password
+                           first_name last_name email)
+                    ],
+                    validate => {
+                        username   => [qw(nate jim bob)],
+                        first_name => '/^\w+$/',    # note the 
+                        last_name  => '/^\w+$/',    # single quotes!
+                        email      => 'EMAIL',
+                        password   => \&check_password,
+                        confirm_password => {
+                            javascript => '== form.password.value',
+                            perl       => 'eq $form->field("password")'
+                        },
+                    },
+               );
 
     # simple sub example to check the password
     sub check_password ($) {
@@ -1300,14 +1281,6 @@ However, if you're specifying more than one argument, then you must
 include the C<name> part:
 
     $form->field(name => 'email', size => '40');
-
-=item add_after_option => $html
-
-Adds the specified HTML code after each checkbox (or radio) option.
-
-=item add_before_option => $html
-
-Adds the specified HTML code before each checkbox (or radio) option.
 
 =item columns => 0 | $width
 

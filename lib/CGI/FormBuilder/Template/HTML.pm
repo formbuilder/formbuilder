@@ -28,7 +28,7 @@ use CGI::FormBuilder::Util;
 use HTML::Template;
 use base 'HTML::Template';
 
-our $REVISION = do { (my $r='$Revision: 97 $') =~ s/\D+//g; $r };
+our $REVISION = do { (my $r='$Revision: 100 $') =~ s/\D+//g; $r };
 our $VERSION = '3.0501';
 
 #
@@ -416,7 +416,7 @@ L<CGI::FormBuilder>, L<CGI::FormBuilder::Template>, L<HTML::Template>
 
 =head1 REVISION
 
-$Id: HTML.pm 97 2007-02-06 17:10:39Z nwiger $
+$Id: HTML.pm 100 2007-03-02 18:13:13Z nwiger $
 
 =head1 AUTHOR
 

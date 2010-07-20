@@ -31,7 +31,7 @@ no  warnings 'uninitialized';
 use CGI::FormBuilder::Util;
 use Text::Template;
 
-our $REVISION = do { (my $r='$Revision: 97 $') =~ s/\D+//g; $r };
+our $REVISION = do { (my $r='$Revision: 100 $') =~ s/\D+//g; $r };
 our $VERSION = '3.0501';
 
 sub new {
@@ -284,7 +284,7 @@ L<CGI::FormBuilder>, L<CGI::FormBuilder::Template>, L<Text::Template>
 
 =head1 REVISION
 
-$Id: Text.pm 97 2007-02-06 17:10:39Z nwiger $
+$Id: Text.pm 100 2007-03-02 18:13:13Z nwiger $
 
 =head1 AUTHOR
 

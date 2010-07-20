@@ -51,7 +51,7 @@ use strict;
 use warnings;
 no  warnings 'uninitialized';
 
-our $REVISION = do { (my $r='$Revision: 97 $') =~ s/\D+//g; $r };
+our $REVISION = do { (my $r='$Revision: 100 $') =~ s/\D+//g; $r };
 our $VERSION = '3.0501';
 warn __PACKAGE__, " is not a real module, please read the docs\n"; 
 1;
@@ -108,7 +108,6 @@ types are:
     Text    -  Text::Template
     TT2     -  Template Toolkit
     Fast    -  CGI::FastTemplate
-    CGI_SSI -  CGI::SSI
 
 In addition to one of these types, you can also specify a complete package name,
 in which case that module will be autoloaded and its C<new()> and C<render()>
@@ -193,11 +192,11 @@ the guts of one of the existing template engines and go from there.
 
 L<CGI::FormBuilder>, L<CGI::FormBuilder::Template::HTML>,
 L<CGI::FormBuilder::Template::Text>, L<CGI::FormBuilder::Template::TT2>,
-L<CGI::FormBuilder::Template::Fast>, L<CGI::FormBuilder::Template::CGI_SSI>
+L<CGI::FormBuilder::Template::Fast>
 
 =head1 REVISION
 
-$Id: Template.pm 97 2007-02-06 17:10:39Z nwiger $
+$Id: Template.pm 100 2007-03-02 18:13:13Z nwiger $
 
 =head1 AUTHOR
 
