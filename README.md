@@ -1,10 +1,8 @@
-# CGI::FormBuilder
-
-Perl module for easily generating, validating, and processing forms
+# CGI::FormBuilder - Perl module for easily generating, validating, and processing forms
 
 ## Support
 
-Please see http://formbuilder.org for online docs and tutorials.  In addition, there is a google group, http://groups.google.com/group/perl-formbuilder
+Please see [formbuilder.org](http://formbuilder.org) for online docs and tutorials.  In addition, there is a [google discussion group](http://groups.google.com/group/perl-formbuilder) for help and patches.
 
 ## Installation
 
@@ -12,7 +10,14 @@ Use CPAN to install, ie:
 
     cpan CGI::FormBuilder
     
-FormBuilder does not have any prerequisites; however, if you want to use templating support, you need to install HTML::Template, Text::Template, Template Toolkit, or CGI::FastTemplate (whichever you prefer to use).
+FormBuilder does not have any prerequisites; however, if you want to use templating support, you need to install one of:
+
+* HTML::Template
+* Text::Template
+* Template Toolkit
+* CGI::FastTemplate
+
+Whichever you prefer to use.
 
 ## Example
 
@@ -67,12 +72,16 @@ FormBuilder does not have any prerequisites; however, if you want to use templat
         print $form->render(header => 1);
     }
 
+## Bug Reports
+
+Please use [github.com issues](http://github.com/formbuilder/formbuilder/issues) for any FormBuilder bugs or features.
+
 ## Author
 
-Copyright (c) 2000-2010 Nate Wiger <nate@wiger.org>. All Rights Reserved.
+Copyright (c) 2000-2010 [Nate Wiger](http://nateware.com). All Rights Reserved.
 
 This module is free software; you may copy this under the terms of the GNU General Public License, or the Artistic License, copies of which should have accompanied your Perl kit.
 
-FormBuilder is maintained by a team of several, including Danny Liang, Wolfgang Radke, and Derek Wueppelmann.  Your best bet for patches/support/etc is the google group: http://groups.google.com/group/perl-formbuilder
+FormBuilder is maintained by a team of several, including Danny Liang, Wolfgang Radke, and Derek Wueppelmann.  Your best bet for patches/support/etc is the [google group](http://groups.google.com/group/perl-formbuilder)
 
 
