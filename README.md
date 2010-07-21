@@ -1,4 +1,4 @@
-# CGI::FormBuilder - Perl module for easily generating, validating, and processing forms
+# CGI::FormBuilder - Perl module for easily generating and processing forms
 
 ## Support
 
@@ -6,7 +6,7 @@ Please see [formbuilder.org](http://formbuilder.org) for online docs and tutoria
 
 ## Installation
 
-Use CPAN to install, ie:
+Use CPAN to install FormBuilder:
 
     cpan CGI::FormBuilder
     
@@ -74,7 +74,7 @@ Whichever you prefer to use.
 
 ## Bug Reports
 
-Please use [github.com issues](http://github.com/formbuilder/formbuilder/issues) for any FormBuilder bugs or features.
+Please use [github issues](http://github.com/formbuilder/formbuilder/issues) for any FormBuilder bugs or features.  You will probably get a better response if you start by posting a message to the [google group](http://groups.google.com/group/perl-formbuilder).
 
 ## Author
 
@@ -82,6 +82,6 @@ Copyright (c) 2000-2010 [Nate Wiger](http://nateware.com). All Rights Reserved.
 
 This module is free software; you may copy this under the terms of the GNU General Public License, or the Artistic License, copies of which should have accompanied your Perl kit.
 
-FormBuilder is maintained by a team of several, including Danny Liang, Wolfgang Radke, and Derek Wueppelmann.  Your best bet for patches/support/etc is the [google group](http://groups.google.com/group/perl-formbuilder)
+FormBuilder is maintained by a team of several, including Danny Liang, Wolfgang Radke, and Derek Wueppelmann.  Your best bet for patches/support/etc is the [google group](http://groups.google.com/group/perl-formbuilder).
 
 
