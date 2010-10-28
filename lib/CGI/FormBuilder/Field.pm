@@ -736,9 +736,16 @@ sub validate () {
             belch "Validation string '$pattern' may be a typo of a builtin pattern"
                 if ($pattern =~ /^[A-Z]+$/); 
             # must reference to prevent serious problem if $value = "'; system 'rm -f /'; '"
-            debug 2, "$field: '$value' $pattern ? 1 : 0";
-            unless (eval qq(\$value $pattern ? 1 : 0)) {
-                $thisfail = ++$bad;
+            if($pattern) {
+                debug 2, "$field: '$value' $pattern ? 1 : 0";
+                unless (eval qq(\$value $pattern ? 1 : 0)) {
+                    $thisfail = ++$bad;
+                }
+            } else {
+                debug 2, "$field: '$value' is defined?";
+                # I'm unsure about this
+                #$thisfail = ++$bad unless(length($value));
+                $thisfail = ++$bad unless(defined($value));
             }
             belch "Literal code eval error in validate: $@" if $@;
         }
