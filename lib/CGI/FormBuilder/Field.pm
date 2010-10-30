@@ -741,13 +741,13 @@ sub validate () {
                 unless (eval qq(\$value $pattern ? 1 : 0)) {
                     $thisfail = ++$bad;
                 }
+                belch "Literal code eval error in validate: $@" if $@;
             } else {
                 debug 2, "$field: '$value' is defined?";
                 # I'm unsure about this
-                #$thisfail = ++$bad unless(length($value));
-                $thisfail = ++$bad unless(defined($value));
+                $thisfail = ++$bad unless(length($value));
+                #$thisfail = ++$bad unless(defined($value));
             }
-            belch "Literal code eval error in validate: $@" if $@;
         }
 
         # Just for debugging's sake
