@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# Copyright (c) 2006 Nate Wiger <nate@wiger.org>
+# newver - increment all version numbers accordingly.
+
+PATH=`dirname $0`:$PATH
+
+if [ $# -lt 1 ]; then
+    cat <<EOF >&2
+Usage: $0 x.yz[_date]
+Ex:    $0 3.03
+EOF
+    exit 2
+fi
+
+ver=$1
+
+for f in `allmod` `alltests`
+do
+    cp -fp $f $f.bak || continue
+    chmod u+w $f
+    sed -e "s/VERSION *=[^};]*/VERSION = '$ver'/" \
+        -e "s/\(use  *CGI::FormBuilder\) .*/\1 $ver;/" $f.bak >$f || continue
+    rm -f $f.bak
+    echo $f ok
+done
+

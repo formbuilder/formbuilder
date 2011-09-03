@@ -1,0 +1,36 @@
+#!/bin/sh
+
+# retest - refresh tests to use new values
+
+tmpfile=`mktemp /tmp/output.XXXXXX` || exit $?
+onefile=/tmp/fb.1.html
+twofile=/tmp/fb.2.html
+cd `dirname $0`/.. || exit $?
+for f in t/*.t
+do
+    tnam=`basename "$f" | cut -d- -f1`
+    while true
+    do
+        # clear files just in case
+        >$onefile
+        >$twofile
+        PERL_TEST_DIFF=diff ${PERL:-perl} -I$PWD/lib $f | \
+            awk '$1 == "not" && $2 == "ok" { print $3 }' >$tmpfile
+        [ -s $tmpfile ] || break
+        printf "\033[31m"
+        for tnum in `cat $tmpfile`
+        do
+            echo 
+            echo "Failed test $f: $tnum"
+            testfile=`printf "t/$tnam-test%2.2d.html" $tnum`
+            [ -f $testfile ] || echo "Warning: $testfile does not exist" >&2
+            echo -n "Update output file $testfile (y/n)? [y] "
+            read ans
+            [ ${ans:-y} = y ] || continue
+            cp -fp $twofile $testfile
+        done
+        printf "\033[m"
+    done
+done
+rm -f $tmpfile
+

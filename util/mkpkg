@@ -1,0 +1,73 @@
+#!/bin/sh
+
+# Copyright (c) 2002-2006 Nate Wiger <nate@wiger.org>
+# mkpkg - trivial packager for CGI::FormBuilder
+cd `dirname $0`/..
+[ $DEBUG ] && set -x
+pwd=$PWD
+
+mod=CGI::FormBuilder
+pkg=CGI-FormBuilder
+pod=pod
+inc="lib pod t"
+mdir=make
+doc="README Changes MANIFEST INSTALL"
+
+ver=${1:-`/usr/bin/perl -I. -Ilib -I"trunk/lib" -M$mod -e 'print $'$mod::VERSION`} || exit $?
+[ ${ans:-y} = y ] || exit 99
+if [ -d "tags/$ver" ] && cd "tags/$ver"; then
+    :
+else
+    # try trunk
+    echo -n "Can't access tags/$ver; use trunk/ (y/n) [n]? "
+    read ans
+    [ ${ans:-n} = y ] || exit 99
+    beta_build="_${2:-`date +%Y%m%d%H%M`}"
+    ver="$ver$beta_build"
+    cd trunk || exit 1
+fi
+
+echo "This will build a CPAN pkg for $mod v$ver"
+echo -n "Continue (y/n) [y]? "
+read ans
+[ ${ans:-y} = y ] || exit 99
+
+# Create a temp dir that we can tgz into CPAN pkg name
+tmpdir=`mktemp -d /tmp/mkpkg.XXXXXX`
+tmppkg=$tmpdir/$pkg-$ver
+mkdir -p $tmppkg || exit 2
+
+# use h to expand symlinks, since Perl won't install them 
+tar cBhvpf - `find $inc $mdir \( -type f -o -type l \) -print | grep -v '\.svn'` | ( cd $tmppkg && tar xBpf - )
+cd $tmppkg || exit 3
+mv $mdir/Makefile.PL .
+rm -rf $mdir
+
+# If a beta build (ie, from trunk), screw with version number
+if [ $beta_build ]; then
+    sed "s/\(VERSION *= *'[^']*\)/\1$beta_build/" lib/CGI/FormBuilder/Util.pm >n || exit $?
+    mv n lib/CGI/FormBuilder/Util.pm || exit $?
+fi
+
+# create special files from pods
+touch MANIFEST
+pod2text $pod/README.pod >README
+pod2text $pod/INSTALL.pod >INSTALL
+pod2text $pod/Changes.pod >Changes
+
+# Generate MANIFEST
+find $inc $doc Makefile.PL -type f -print | sort >MANIFEST
+
+cd ..
+tar cvhf $pkg-$ver.tar $pkg-$ver || exit 4
+gzip $pkg-$ver.tar || exit 5
+mv $pkg-$ver.tar.gz $pkg-$ver.tgz || exit 6
+[ -d $pwd/pkgs ] || mkdir -p $pwd/pkgs
+mv $pkg-$ver.tgz $pwd/pkgs
+cd /
+rm -rf $tmpdir
+
+echo "Packaging complete!"
+echo "Don't forget:"
+echo "    svn add $pwd/pkgs/$pkg-$ver.tgz"
+

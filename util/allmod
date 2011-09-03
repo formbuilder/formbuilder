@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Copyright (c) 2006 Nathan Wiger <nate@wiger.org>
+# allmod - just return all .pm files for other scripts
+
+if [ $# -gt 1 ]; then
+    cat <<EOF >&2
+Usage: $0
+EOF
+    exit 2
+fi
+
+cd `dirname $0`/../lib
+find . -name '*.pm' -type f "$@" | sed 's/\.\///'
+
