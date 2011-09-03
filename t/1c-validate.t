@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-# Copyright (c) 2000-2006 Nathan Wiger <nate@wiger.org>.
+# Copyright (c) Nate Wiger http://nateware.com.
 # All Rights Reserved. If you're reading this, you're bored.
 # 1c-validate.t - test validation
 
@@ -16,7 +16,7 @@ use FindBin;
 
 # use a BEGIN block so we print our plan before CGI::FormBuilder is loaded
 BEGIN { 
-    my $numtests = 11;
+    my $numtests = 13;
     unshift @INC, "$FindBin::Bin/../lib";
 
     plan tests => $numtests;
@@ -150,6 +150,22 @@ my @test = (
                  validate => { have => '/^Not/' },
                  required => 'ALL' },
         pass => 1,
+    },
+
+    #12
+    {
+        opt => { fields => [qw/required_zero required_space/],
+                 values => { required_zero => '0', required_space => ' ' },
+                 required => 'ALL' },
+        pass => 1,
+    },
+
+    #13
+    {
+        opt => { fields => [qw/required_empty/],
+                 values => { required_empty => '' },
+                 required => 'ALL' },
+        pass => 0,
     },
 );
 

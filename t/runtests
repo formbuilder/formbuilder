@@ -2,8 +2,10 @@
 cd `dirname $0`/..
 for f in t/*.t
 do
-    echo "**** $f ****"
-    perl -I/home/nwiger/dev/formbuilder/trunk/lib $f "$@"
+    echo "** $f"
+    printf "\033[31m"
+    perl -I/home/nwiger/dev/formbuilder/trunk/lib $f "$@" | grep 'not ok'
+    printf "\033[m"
 done
 rm -f cgisess*
 

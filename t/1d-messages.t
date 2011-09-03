@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-# Copyright (c) 2000-2006 Nathan Wiger <nate@wiger.org>.
+# Copyright (c) Nate Wiger http://nateware.com.
 # All Rights Reserved. If you're reading this, you're bored.
 # 1d-messages.t - messages and localization
 

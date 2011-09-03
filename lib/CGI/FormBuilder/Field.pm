@@ -1,7 +1,7 @@
 
 ###########################################################################
-# Copyright (c) 2000-2006 Nate Wiger <nate@wiger.org>. All Rights Reserved.
-# Please visit www.formbuilder.org for tutorials, support, and examples.
+# Copyright (c) Nate Wiger http://nateware.com. All Rights Reserved.
+# Please visit http://formbuilder.org for tutorials, support, and examples.
 ###########################################################################
 
 package CGI::FormBuilder::Field;
@@ -731,6 +731,9 @@ sub validate () {
             unless (defined($value) && length($value)) {
                 $thisfail = ++$bad;
             }
+        } elsif (! defined $pattern) {
+            debug 2, "$field: length('$value') > 0";
+            $thisfail = ++$bad unless length($value) > 0;
         } else {
             # literal string is a literal comparison, but warn of typos...
             belch "Validation string '$pattern' may be a typo of a builtin pattern"
