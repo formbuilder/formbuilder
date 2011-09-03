@@ -313,6 +313,10 @@ fields:
         options: 0,1,2,3,4,5,6,7,8,9
         jsclick: this.ham.value = "it\'s a pig, man!"
         columns: 1
+    cb_input:
+        type: checkbox
+        label: Option
+        options: active=Have this item active
 ',
     },
 

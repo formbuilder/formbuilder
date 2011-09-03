@@ -24,7 +24,7 @@ do
             echo "Failed test $f: $tnum"
             testfile=`printf "t/$tnam-test%2.2d.html" $tnum`
             [ -f $testfile ] || echo "Warning: $testfile does not exist" >&2
-            echo -n "Update output file $testfile (y/n)? [y] "
+            echo "Update output file $testfile (y/n)? [y] \c"
             read ans
             [ ${ans:-y} = y ] || continue
             cp -fp $twofile $testfile

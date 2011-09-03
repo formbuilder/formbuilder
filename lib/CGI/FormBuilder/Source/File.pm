@@ -156,17 +156,18 @@ sub parse {
                 @val = split /\s*,\s*/, $line;
 
                 # m=Male, f=Female -> [m,Male], [f,Female]
-                for (@val) {
-                    $_ = [ split /\s*=\s*/, $_, 2 ] if /=/;
+                for (my $i=0; $i < @val; $i++) {
+                    $val[$i] = [ split /\s*=\s*/, $val[$i], 2 ] if $val[$i] =~ /=/;
                 }
             }
 
             # only arrayref on multi values b/c FB is "smart"
             if ($ptr->{$term}) {
                 $ptr->{$term} = (ref $ptr->{$term})
-                                    ? [ @{$ptr->{$term}}, @val ] : @val > 1 ? \@val : $val[0];
+                                    ? [ @{$ptr->{$term}}, @val ] : @val > 1 ? \@val :
+                                      ref($val[0]) eq 'ARRAY' ? \@val : $val[0];
             } else {
-                $ptr->{$term} = @val > 1 ? \@val : $val[0];
+                $ptr->{$term} = @val > 1 ? \@val : ref($val[0]) eq 'ARRAY' ? \@val : $val[0];
             }
             $inval = 1;
         } else {
