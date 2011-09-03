@@ -1,5 +1,0 @@
-- Loops with templates using CGI::SSI module.
-
-- Ability to prevent multiple submission of the form (pressing submit button
-  several times). See also
-  http://worthposting.wordpress.com/2008/07/10/button-submit-once/
