@@ -49,6 +49,7 @@ function validate_order (form) {
     if (! selected_send_me_emails) {
         alertstr += '- Choose one of the "Send Me Emails" options\n';
         invalid++;
+        invalid_fields.push('send_me_emails');
     }
 
     // address: standard text, hidden, password, or textarea box

@@ -75,6 +75,7 @@ EOJS
     if (! selected_$jsfield) {
         alertstr += '$alertstr';
         invalid++;
+        invalid_fields.push('$jsfield');
     }
 EOJS
 

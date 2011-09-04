@@ -21,6 +21,7 @@ function validate (form) {
     if (! selected_name) {
         alertstr += '- Choose one of the "Name" options\n';
         invalid++;
+        invalid_fields.push('name');
     }
 
     if (invalid > 0 || alertstr != '') {
