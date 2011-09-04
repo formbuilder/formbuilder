@@ -1439,6 +1439,16 @@ sub prepare {
     $tmplvar{invalid}  = $self->invalid;
     debug 2, "\$tmplvar{required} = \$self->required";
     $tmplvar{required} = $self->required;
+
+    my $fieldsets = $self->fieldsets;
+    for my $key (keys %$fieldsets) {
+        $tmplvar{fieldset}{$key} = {
+            name => $key,
+            label => $fieldsets->{$key},
+        }
+    }
+    $tmplvar{fieldsets} = [ map $tmplvar{fieldset}{$_}, $self->fieldsets ];
+
     debug 2, "\$tmplvar{fields} = [ map \$tmplvar{field}{\$_}, \$self->field ]";
     $tmplvar{fields}   = [ map $tmplvar{field}{$_}, $self->field ];
 
