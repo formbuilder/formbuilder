@@ -14,19 +14,6 @@ mdir=make
 doc="README Changes MANIFEST INSTALL"
 
 ver=${1:-`/usr/bin/perl -I. -Ilib -I"$PWD/lib" -M$mod -e 'print $'$mod::VERSION`} || exit $?
-[ ${ans:-y} = y ] || exit 99
-if [ -d "tags/$ver" ] && cd "tags/$ver"; then
-    :
-else
-    # try trunk
-    echo "Can't access tags/$ver; use ./ (y/n) [n]? \c"
-    read ans
-    [ ${ans:-n} = y ] || exit 99
-    beta_build="_${2:-`date +%Y%m%d%H%M`}"
-    ver="$ver$beta_build"
-    cd trunk || exit 1
-fi
-
 echo "This will build a CPAN pkg for $mod v$ver"
 echo "Continue (y/n) [y]? \c"
 read ans
