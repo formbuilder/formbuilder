@@ -74,11 +74,11 @@ Whichever you prefer to use.
 
 ## Bug Reports
 
-Please use [github issues](http://github.com/formbuilder/formbuilder/issues) for any FormBuilder bugs or features.  You will probably get a better response if you start by posting a message to the [google group](http://groups.google.com/group/perl-formbuilder).
+Please use [github issues](http://github.com/formbuilder/formbuilder/issues) for any FormBuilder bugs or features.  You will probably get a better response if you start by posting a message to the [google group](http://groups.google.com/group/perl-formbuilder). Any issues posted to the horrific rt.cpan.org site will be IGNORED or closed with a comment asking you to resubmit via github.
 
 ## Author
 
-Copyright (c) 2000-2010 [Nate Wiger](http://nateware.com). All Rights Reserved.
+Copyright (c) 2000-2011 [Nate Wiger](http://nateware.com). All Rights Reserved.
 
 This module is free software; you may copy this under the terms of the GNU General Public License, or the Artistic License, copies of which should have accompanied your Perl kit.
 
