@@ -10,7 +10,6 @@ mod=CGI::FormBuilder
 pkg=CGI-FormBuilder
 pod=pod
 inc="lib pod t"
-mdir=make
 doc="README Changes MANIFEST INSTALL"
 
 ver=${1:-`/usr/bin/perl -I. -Ilib -I"$PWD/lib" -M$mod -e 'print $'$mod::VERSION`} || exit $?
@@ -25,10 +24,8 @@ tmppkg=$tmpdir/$pkg-$ver
 mkdir -p $tmppkg || exit 2
 
 # use h to expand symlinks, since Perl won't install them 
-tar cBhvpf - `find $inc $mdir \( -type f -o -type l \) -print | ( cd $tmppkg && tar xBpf - )
+tar cBhvpf - `find $inc \( -type f -o -type l \) -print` | ( cd $tmppkg && tar xBpf - )
 cd $tmppkg || exit 3
-mv $mdir/Makefile.PL .
-rm -rf $mdir
 
 # If a beta build (ie, from trunk), screw with version number
 if [ $beta_build ]; then
