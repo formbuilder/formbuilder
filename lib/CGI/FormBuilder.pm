@@ -18,7 +18,7 @@ use CGI::FormBuilder::Util;
 use CGI::FormBuilder::Field;
 use CGI::FormBuilder::Messages;
 
-our $VERSION = '3.0501';
+our $VERSION = '3.06';
 our $REVISION = do { (my $r='$Revision: 100 $') =~ s/\D+//g; $r };
 our $AUTOLOAD;
 

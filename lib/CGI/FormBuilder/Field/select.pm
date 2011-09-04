@@ -21,7 +21,7 @@ use CGI::FormBuilder::Field;
 use base 'CGI::FormBuilder::Field';
 
 our $REVISION = do { (my $r='$Revision: 100 $') =~ s/\D+//g; $r };
-our $VERSION = '3.0501';
+our $VERSION = '3.06';
 
 sub script {
     my $self = shift;

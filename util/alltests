@@ -10,6 +10,6 @@ EOF
     exit 2
 fi
 
-cd `dirname $0`/../t
-find . -name '*.t' -type f "$@" | sed 's/\.\///'
+cd `dirname $0`/..
+find t -name '*.t' -type f "$@" | sed 's/\.\///'
 

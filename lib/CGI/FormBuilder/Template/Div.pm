@@ -25,7 +25,7 @@ no  warnings 'uninitialized';
 use CGI::FormBuilder::Util;
 
 our $REVISION = do { (my $r='$Revision: 68 $') =~ s/\D+//g; $r };
-our $VERSION = '3.0501';
+our $VERSION = '3.06';
 
 sub new {
     my $self  = shift;

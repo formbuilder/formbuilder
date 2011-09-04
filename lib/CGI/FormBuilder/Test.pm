@@ -29,7 +29,7 @@ no  warnings 'uninitialized';
 use CGI::FormBuilder::Util;
 
 our $REVISION = do { (my $r='$Revision: 100 $') =~ s/\D+//g; $r };
-our $VERSION = '3.0501';
+our $VERSION = '3.06';
 our $DEBUG = 0;
 
 use Exporter;

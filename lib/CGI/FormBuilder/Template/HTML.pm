@@ -29,7 +29,7 @@ use HTML::Template;
 use base 'HTML::Template';
 
 our $REVISION = do { (my $r='$Revision: 100 $') =~ s/\D+//g; $r };
-our $VERSION = '3.0501';
+our $VERSION = '3.06';
 
 #
 # For legacy reasons, and due to its somewhat odd interface, 

@@ -9,7 +9,7 @@ use strict;
 our $TESTING = 1;
 our $DEBUG = $ENV{DEBUG} || 0;
 our $VERSION;
-BEGIN { $VERSION = '3.0501'; }
+BEGIN { $VERSION = '3.06'; }
 
 use Test;
 use FindBin;
@@ -45,7 +45,7 @@ for (@pm) {
 $ENV{REQUEST_METHOD} = 'GET';
 $ENV{QUERY_STRING}   = 'ticket=111&user=pete&replacement=TRUE&action=Unsubscribe&name=Pete+Peteson&email=pete%40peteson.com&extra=junk&_submitted=1&blank=&two=&two=&other_test=_other_other_test&_other_other_test=42&other_test_2=_other_other_test_2&_other_other_test_2=nope';
 
-use CGI::FormBuilder 3.0501;
+use CGI::FormBuilder 3.06;
 use CGI::FormBuilder::Test;
 
 # jump to a test if specified for debugging (goto eek!)

@@ -19,7 +19,7 @@ use CGI::FormBuilder::Field::text;
 use base 'CGI::FormBuilder::Field::text';
 
 our $REVISION = do { (my $r='$Revision: 80 $') =~ s/\D+//g; $r };
-our $VERSION = '3.0501';
+our $VERSION = '3.06';
 
 sub script { '' }
 
