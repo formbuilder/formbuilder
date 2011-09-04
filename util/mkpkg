@@ -13,13 +13,13 @@ inc="lib pod t"
 mdir=make
 doc="README Changes MANIFEST INSTALL"
 
-ver=${1:-`/usr/bin/perl -I. -Ilib -I"trunk/lib" -M$mod -e 'print $'$mod::VERSION`} || exit $?
+ver=${1:-`/usr/bin/perl -I. -Ilib -I"$PWD/lib" -M$mod -e 'print $'$mod::VERSION`} || exit $?
 [ ${ans:-y} = y ] || exit 99
 if [ -d "tags/$ver" ] && cd "tags/$ver"; then
     :
 else
     # try trunk
-    echo -n "Can't access tags/$ver; use trunk/ (y/n) [n]? "
+    echo "Can't access tags/$ver; use ./ (y/n) [n]? \c"
     read ans
     [ ${ans:-n} = y ] || exit 99
     beta_build="_${2:-`date +%Y%m%d%H%M`}"
@@ -28,7 +28,7 @@ else
 fi
 
 echo "This will build a CPAN pkg for $mod v$ver"
-echo -n "Continue (y/n) [y]? "
+echo "Continue (y/n) [y]? \c"
 read ans
 [ ${ans:-y} = y ] || exit 99
 
@@ -38,7 +38,7 @@ tmppkg=$tmpdir/$pkg-$ver
 mkdir -p $tmppkg || exit 2
 
 # use h to expand symlinks, since Perl won't install them 
-tar cBhvpf - `find $inc $mdir \( -type f -o -type l \) -print | grep -v '\.svn'` | ( cd $tmppkg && tar xBpf - )
+tar cBhvpf - `find $inc $mdir \( -type f -o -type l \) -print | ( cd $tmppkg && tar xBpf - )
 cd $tmppkg || exit 3
 mv $mdir/Makefile.PL .
 rm -rf $mdir
@@ -69,5 +69,5 @@ rm -rf $tmpdir
 
 echo "Packaging complete!"
 echo "Don't forget:"
-echo "    svn add $pwd/pkgs/$pkg-$ver.tgz"
+echo "    git add $pwd/pkgs/$pkg-$ver.tgz"
 
