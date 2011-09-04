@@ -131,7 +131,7 @@ sub parse {
             }
 
             my @val;
-            if ($term =~ /^js/ || $term eq 'messages') {
+            if ($term =~ /^js/ || $term =~ /^on[a-z]/ || $term eq 'messages') {
                 @val = $line;   # verbatim
             } elsif ($line =~ s/^\\(.)//) {
                 # Reference - this is tricky. Go all the way up to
