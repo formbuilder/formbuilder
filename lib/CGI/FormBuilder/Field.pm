@@ -409,6 +409,7 @@ sub type {
 
     # Re-bless into the appropriate package
     my $pkg = __PACKAGE__ . '::' . $type;
+    $pkg =~ s/\-/_/g;  # handle HTML5 type names ala 'datetime-local'
     eval "require $pkg";
     puke "Can't load $pkg for field '$name' (type '$type'): $@" if $@;
     bless $self, $pkg;
