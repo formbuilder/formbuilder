@@ -103,14 +103,12 @@ lines of Perl, B<FormBuilder> is for you.
 
 =head1 SUPPORT
 
-There is a whole website devoted to this module:
+If this is your first time using B<FormBuilder>, you should check out
+the website for tutorials and examples at L<http://formbuilder.org>.
 
-    www.formbuilder.org
-
-There are online tutorials, code examples, full documentation, and much
-more. There is also a mailing list with some pretty smart people on it:
-
-    fbusers-subscribe@formbuilder.org
+You should also consider joining the google group at 
+L<http://groups.google.com/group/perl-formbuilder>.
+There are some pretty smart people on the list that can help you out.
 
 Have fun!
 
@@ -120,8 +118,7 @@ For details on installation, please read the file C<INSTALL>.
 
 =head1 AUTHOR
 
-Copyright (c) 2000-2006 Nate Wiger <nate@wiger.org>
-All Rights Reserved.
+Copyright (c) L<Nate Wiger|http://nateware.com>. All Rights Reserved.
 
 This module is free software; you may copy this under the terms of
 the GNU General Public License, or the Artistic License, copies of

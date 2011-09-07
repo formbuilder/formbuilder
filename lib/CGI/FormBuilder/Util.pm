@@ -528,7 +528,7 @@ $Id: Util.pm 100 2007-03-02 18:13:13Z nwiger $
 
 =head1 AUTHOR
 
-Copyright (c) 2000-2006 Nate Wiger <nate@wiger.org>. All Rights Reserved.
+Copyright (c) Nate Wiger L<http://nateware.com>. All Rights Reserved.
 
 This module is free software; you may copy this under the terms of
 the GNU General Public License, or the Artistic License, copies of

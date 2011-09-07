@@ -201,7 +201,7 @@ $Id: Template.pm 97 2007-02-06 17:10:39Z nwiger $
 
 =head1 AUTHOR
 
-Copyright (c) 2000-2006 Nate Wiger <nate@wiger.org>. All Rights Reserved.
+Copyright (c) Nate Wiger L<http://nateware.com>. All Rights Reserved.
 
 This module is free software; you may copy this under the terms of
 the GNU General Public License, or the Artistic License, copies of
