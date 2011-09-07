@@ -1082,25 +1082,27 @@ By default, the C<validate> option also toggles each field to make
 it required. However, you can use the C<required> option to change
 this, see it for more details.
 
-Let's look at a concrete example:
+Let's look at a concrete example.  Note that the javascript
+validation is a negative match, while the perl validation
+is a positive match.
 
     my $form = CGI::FormBuilder->new(
-                    fields => [
-                        qw(username password confirm_password
-                           first_name last_name email)
-                    ],
-                    validate => {
-                        username   => [qw(nate jim bob)],
-                        first_name => '/^\w+$/',    # note the 
-                        last_name  => '/^\w+$/',    # single quotes!
-                        email      => 'EMAIL',
-                        password   => \&check_password,
-                        confirm_password => {
-                            javascript => '== form.password.value',
-                            perl       => 'eq $form->field("password")'
-                        },
-                    },
-               );
+        fields => [qw(
+            username    password    confirm_password
+            first_name  last_name   email
+        )],
+        validate => {
+            username   => [qw(nate jim bob)],
+            first_name => '/^\w+$/',    # note the 
+            last_name  => '/^\w+$/',    # single quotes!
+            email      => 'EMAIL',
+            password   => \&check_password,
+            confirm_password => {
+                javascript => '!= form.password.value',       # neg
+                perl       => 'eq $form->field("password")',  # pos
+            },
+        },
+    );
 
     # simple sub example to check the password
     sub check_password ($) {
@@ -1281,6 +1283,14 @@ However, if you're specifying more than one argument, then you must
 include the C<name> part:
 
     $form->field(name => 'email', size => '40');
+
+=item add_after_option => $html
+
+Adds the specified HTML code after each checkbox (or radio) option.
+
+=item add_before_option => $html
+
+Adds the specified HTML code before each checkbox (or radio) option.
 
 =item columns => 0 | $width
 

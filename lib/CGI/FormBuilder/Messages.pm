@@ -147,6 +147,7 @@ Currently included with B<FormBuilder> are several different locales:
     Japanese             ja_JP
     Norwegian/Norvegian  no_NO
     Turkish              tr_TR
+    Russian              ru_RU
 
 To enable automatic localization that will detect the client's locale
 and use one of these included locales, simply turn on C<auto> messages:
