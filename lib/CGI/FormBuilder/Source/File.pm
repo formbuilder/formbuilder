@@ -57,6 +57,7 @@ sub parse {
 
     my $refield = 0;
     my @file;
+    my $utf8 = 0;   # parse file as utf8
 
     debug 1, "parsing $file as input source";
     if (ref $file eq 'SCALAR') {
@@ -76,6 +77,8 @@ sub parse {
         next if /^\s*\[\%\s*\#|^\s*-*\%\]/;   # TT comments too
         chomp;
         my($term, $line) = split /\s*:\s*/, $_, 2;
+        $utf8 = 1 if $term eq 'charset' && $line =~ /^utf/;  # key off charset to decode value
+        $line = Encode::decode('utf-8', $line) if $utf8;
 
         # here string term-inator (har)
         if ($here) {
