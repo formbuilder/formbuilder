@@ -244,7 +244,7 @@ $Id: TT2.pm 100 2007-03-02 18:13:13Z nwiger $
 
 =head1 AUTHOR
 
-Copyright (c) Nate Wiger L<http://nateware.com>. All Rights Reserved.
+Copyright (c) L<Nate Wiger|http://nateware.com>. All Rights Reserved.
 
 Template Tookit support is largely due to a huge patch from Andy Wardley.
 

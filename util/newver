@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright (c) 2006 Nate Wiger <nate@wiger.org>
+# Copyright (c) Nate Wiger http://nateware.com
 # newver - increment all version numbers accordingly.
 
 PATH=`dirname $0`:$PATH

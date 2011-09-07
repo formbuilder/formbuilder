@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# Copyright (c) Nate Wiger http://nateware.com
 # retest - refresh tests to use new values
 
 tmpfile=`mktemp /tmp/output.XXXXXX` || exit $?

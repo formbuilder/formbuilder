@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Copyright (c) 2006 Nathan Wiger <nate@wiger.org>
+# Copyright (c) Nate Wiger http://nateware.com
 # allmod - just return all .pm files for other scripts
 
 if [ $# -gt 1 ]; then
