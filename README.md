@@ -4,6 +4,8 @@
 
 Please see [formbuilder.org](http://formbuilder.org) for online docs and tutorials.  In addition, there is a [google discussion group](http://groups.google.com/group/perl-formbuilder) for help and patches.
 
+<a href='http://www.pledgie.com/campaigns/15994'><img alt='Click here to lend your support to: formbuilder and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/15994.png?skin_name=chrome' border='0' /></a>
+
 ## Installation
 
 Use CPAN to install FormBuilder:
