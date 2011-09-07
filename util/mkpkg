@@ -9,10 +9,10 @@ pwd=$PWD
 mod=CGI::FormBuilder
 pkg=CGI-FormBuilder
 pod=pod
-inc="lib pod t"
+inc="Makefile.PL lib pod t"
 doc="README Changes MANIFEST INSTALL"
 
-ver=${1:-`/usr/bin/perl -I. -Ilib -I"$PWD/lib" -M$mod -e 'print $'$mod::VERSION`} || exit $?
+ver=${1:-`/usr/bin/perl -I"$PWD/lib" -M$mod -e 'print $'$mod::VERSION`} || exit $?
 echo "This will build a CPAN pkg for $mod v$ver"
 echo "Continue (y/n) [y]? \c"
 read ans
