@@ -24,6 +24,7 @@ function validate (form) {
     if (! selected_sex) {
         alertstr += '- Choose one of the "glass EYE fucker" options\n';
         invalid++;
+        invalid_fields.push('sex');
     }
 
     if (invalid > 0 || alertstr != '') {
