@@ -4,6 +4,8 @@
 
 Please see [formbuilder.org](http://formbuilder.org) for online docs and tutorials.  In addition, there is a [google discussion group](http://groups.google.com/group/perl-formbuilder) for help and patches.
 
+<a href='http://www.pledgie.com/campaigns/15994'><img alt='Click here to lend your support to: formbuilder and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/15994.png?skin_name=chrome' border='0' /></a>
+
 ## Installation
 
 Use CPAN to install FormBuilder:
@@ -16,6 +18,7 @@ FormBuilder does not have any prerequisites; however, if you want to use templat
 * Text::Template
 * Template Toolkit
 * CGI::FastTemplate
+* CGI::SSI
 
 Whichever you prefer to use.
 
@@ -72,9 +75,20 @@ Whichever you prefer to use.
         print $form->render(header => 1);
     }
 
+## Patches/Additions
+
+I'm aware that many Perl users are not familiar with git.  This is ok.  To submit a patch, just
+make changes to your local copy of FormBuilder and then create a *unified* *diff*:
+
+    cp FormBuilder.pm FormBuilder.pm.orig
+    vi FormBuilder.pm   # make changes
+    diff -u FormBuilder.pm.orig FormBuilder.pm >name_of_my_feature.diff
+    
+Then, just attach that diff to a github.com bug report (see below).
+
 ## Bug Reports
 
-Please use [github issues](http://github.com/formbuilder/formbuilder/issues) for any FormBuilder bugs or features.  You will probably get a better response if you start by posting a message to the [google group](http://groups.google.com/group/perl-formbuilder). Any issues posted to the horrific rt.cpan.org site will be IGNORED or closed with a comment asking you to resubmit via github.
+Please use [github issues](http://github.com/formbuilder/formbuilder/issues) for any FormBuilder bugs or features.  You will probably get a better response if you start by posting a message to the [google group](http://groups.google.com/group/perl-formbuilder). Any issues posted to the horrific rt.cpan.org site will be **IGNORED** or rejected without comment.
 
 ## Author
 

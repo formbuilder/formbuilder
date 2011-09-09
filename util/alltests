@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# Copyright (c) 2006 Nathan Wiger <nate@wiger.org>
-# allmod - just return all .pm files for other scripts
+# Copyright (c) Nate Wiger http://nateware.com
+# alltests - just return all .t files for other scripts
 
 if [ $# -gt 1 ]; then
     cat <<EOF >&2

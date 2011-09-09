@@ -288,7 +288,7 @@ $Id: Text.pm 100 2007-03-02 18:13:13Z nwiger $
 
 =head1 AUTHOR
 
-Copyright (c) 2000-2006 Nate Wiger <nate@wiger.org>. All Rights Reserved.
+Copyright (c) L<Nate Wiger|http://nateware.com>. All Rights Reserved.
 
 Text::Template support is due to huge contributions by Jonathan Buhacoff.
 Thanks man.

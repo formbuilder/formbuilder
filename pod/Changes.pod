@@ -15,6 +15,12 @@ autoload style of getting to fields:
 In order to allow the second form, you must specify the C<fieldsubs>
 option to C<new()>.
 
+=head1 VERSION 3.06
+
+Maintenance release with a couple new features: support for "charset: utf8"
+in C<Source::File>, add_before_option/add_after_option c/o Victor Porton,
+and support for HTML5 type names c/o Wolfgang Radke.
+
 =head1 VERSION 3.0501
 
 Bugfix release to repair a memory leak and a few "other" field edge cases.
@@ -493,8 +499,7 @@ overdue.
 
 =head1 AUTHOR
 
-Copyright (c) 2000-2006 Nate Wiger <nate@wiger.org>
-All Rights Reserved.
+Copyright (c) L<Nate Wiger|http://nateware.com>. All Rights Reserved.
 
 This module is free software; you may copy this under the terms of
 the GNU General Public License, or the Artistic License, copies of
