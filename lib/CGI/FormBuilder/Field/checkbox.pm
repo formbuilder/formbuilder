@@ -204,6 +204,7 @@ sub tag {
         }
         $tag .= "\n";
     }
+    $tag .= '  '.htmltag('/tr') if $checkbox_table && ($checkbox_col % $self->columns > 0);
     $tag .= '  '.htmltag('/table') if $checkbox_table;
 
     # add an additional tag for our _other field
