@@ -8,11 +8,11 @@ package CGI::FormBuilder::Messages::locale;
 
 use strict;
 
-
-our $VERSION = '3.07';
+use CGI::FormBuilder::Messages::base;
+use base 'CGI::FormBuilder::Messages::base';
 
 # Simply create a hash of messages for this language
-our %MESSAGES = (
+__PACKAGE__->define_messages({
     lang                  => 'en_US',
     charset               => 'iso-8859-1',
 
@@ -69,12 +69,7 @@ If you have any questions, please contact our staff by replying
 to this email.
 EOT
     mail_results_subject  => '%s Submission Results',
-);
-
-# This method should remain unchanged
-sub messages {
-    return wantarray ? %MESSAGES : \%MESSAGES;
-}
+});
 
 1;
 __END__

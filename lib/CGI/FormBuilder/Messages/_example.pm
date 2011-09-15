@@ -10,9 +10,9 @@
 # please post it to the mailing list, so that it is included in
 # future releases.
 #
-# To create one, simple replace __LANG__ with your language, for
+# To create one, simply replace __LANG__ with your language, for
 # example, "uk_UA". Then, change all the values on the right side
-# of the %MESSAGES hash to the correct strings for your language.
+# of the define_messages hash to the correct strings for your language.
 #
 # Save the file as __LANG__.pm, for example, "uk_UA.pm". You can
 # then use this in FormBuilder as:
@@ -22,17 +22,16 @@
 # That's it!
 #
 
-package CGI::FormBuilder::Messages::__LANG__;
+package CGI::FormBuilder::Messages::locale;
 
 use strict;
 use utf8;
 
+use CGI::FormBuilder::Messages::default;
+use base 'CGI::FormBuilder::Messages::default';
 
-our $VERSION = '3.07';
-
-# First, create a hash of messages for this language
-# Then, change "__LANG__" to the POSIX locale, such as "en_US" or "da_DK"
-our %MESSAGES = (
+# Define messages for this language
+__PACKAGE__->define_messages({
     lang                  => '__LANG__',
     charset               => 'utf-8',
 
@@ -83,12 +82,7 @@ If you have any questions, please contact our staff by replying
 to this email.
 EOT
     mail_results_subject  => '%s Submission Results',
-);
-
-# This method should remain unchanged
-sub messages {
-    return wantarray ? %MESSAGES : \%MESSAGES;
-}
+});
 
 1;
 __END__

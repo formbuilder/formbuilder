@@ -1,2 +1,2 @@
 #!/bin/sh
-cd `dirname $0`/util && exec ./retest
+cd `dirname $0`/util && exec ./retest "$@"

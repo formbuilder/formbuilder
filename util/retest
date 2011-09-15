@@ -7,31 +7,40 @@ tmpfile=`mktemp /tmp/output.XXXXXX` || exit $?
 onefile=/tmp/fb.1.html
 twofile=/tmp/fb.2.html
 cd `dirname $0`/.. || exit $?
-for f in t/*.t
+
+if [ $# -gt 0 ]; then
+    files="$*"
+else
+    files="t/*.t"
+fi
+
+for f in $files
 do
     tnam=`basename "$f" | cut -d- -f1`
-    while true
-    do
+    # have to infinitely loop so we get a chance to update files
+    # while true
+    # do
         # clear files just in case
         >$onefile
         >$twofile
+        echo "$f";
         PERL_TEST_DIFF='diff -u' ${PERL:-perl} -I$PWD/lib $f | \
             awk '$1 == "not" && $2 == "ok" { print $3 }' >$tmpfile
         [ -s $tmpfile ] || break
         printf "\033[31m"
         for tnum in `cat $tmpfile`
         do
-            echo 
-            echo "Failed test $f: $tnum"
+            echo "Failed test $f [$tnum]"
             testfile=`printf "t/$tnam-test%2.2d.html" $tnum`
-            [ -f $testfile ] || echo "Warning: $testfile does not exist" >&2
-            echo "Update output file $testfile (y/n)? [y] \c"
-            read ans
-            [ ${ans:-y} = y ] || continue
-            cp -fp $twofile $testfile
+            if [ -f $testfile ]; then
+                echo "Update output file $testfile (y/n)? [y] \c"
+                read ans
+                [ ${ans:-y} = y ] && cp -fp $twofile $testfile
+                echo 
+            fi
         done
         printf "\033[m"
-    done
+    # done
 done
 rm -f $tmpfile
 

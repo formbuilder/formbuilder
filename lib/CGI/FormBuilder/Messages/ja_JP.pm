@@ -9,15 +9,15 @@ package CGI::FormBuilder::Messages::locale;
 use strict;
 use utf8;
 
+use CGI::FormBuilder::Messages::default;
+use base 'CGI::FormBuilder::Messages::default';
 
-our $VERSION = '3.07';
-
-# Simply create a hash of messages for this language
-our %MESSAGES = (
+# Define messages for this language
+__PACKAGE__->define_messages({
     lang                  => 'ja_JP',
     charset               => 'utf-8',
 
-	js_invalid_start      => '%s個の入力エラーがあります。',
+	  js_invalid_start      => '%s個の入力エラーがあります。',
     js_invalid_end        => 'もう一度確認して正しい内容を入力して下さい。',
 
     js_invalid_input      => '%sに正しい値を入力して下さい。',
@@ -62,12 +62,7 @@ our %MESSAGES = (
 質問等ございます方は、このメールをそのまま返信して下さい。
 EOT
     mail_results_subject  => '%sの送信内容',
-);
-
-# This method should remain unchanged
-sub messages {
-    return wantarray ? %MESSAGES : \%MESSAGES;
-}
+});
 
 1;
 __END__

@@ -9,12 +9,11 @@ package CGI::FormBuilder::Messages::locale;
 use strict;
 use utf8;
 
-
-our $VERSION = '3.07';
+use CGI::FormBuilder::Messages::default;
+use base 'CGI::FormBuilder::Messages::default';
 
 # First, create a hash of messages for this language
-
-our %MESSAGES = (
+__PACKAGE__->define_messages({
     lang                  => 'es_ES',
     charset               => 'utf-8',
 
@@ -55,12 +54,7 @@ our %MESSAGES = (
     mail_confirm_subject  => '%s Confirmación de su pedido.',
     mail_confirm_text     => '¡El sistema ha recibido sus datos! %s., Si desea hacer alguna pregunta, por favor responda a éste correo electrónico.',
     mail_results_subject  => '%s Resultado de su pedido.'
-    );
-
-# This method should remain unchanged
-sub messages {
-    return wantarray ? %MESSAGES : \%MESSAGES;
-}
+});
 
 1;
 __END__

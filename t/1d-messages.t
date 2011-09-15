@@ -51,8 +51,10 @@ BEGIN {
     # Then, also add in our custom tests as well, which is two passes over
     # the %messages hash (above) plus 4 charset/dtd checks
     #
-
-    my $numtests = (34 * @pm) + @pm + (keys(%messages) * 2) + 4;
+    require CGI::FormBuilder::Messages::default;
+    my %hash = CGI::FormBuilder::Messages::locale->messages;
+    my $numkeys = keys %hash;
+    my $numtests = ($numkeys * @pm) + @pm + (keys(%messages) * 2) + 4;
 
     plan tests => $numtests;
 
