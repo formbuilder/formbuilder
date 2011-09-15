@@ -15,7 +15,7 @@ do
         # clear files just in case
         >$onefile
         >$twofile
-        PERL_TEST_DIFF=diff ${PERL:-perl} -I$PWD/lib $f | \
+        PERL_TEST_DIFF='diff -u' ${PERL:-perl} -I$PWD/lib $f | \
             awk '$1 == "not" && $2 == "ok" { print $3 }' >$tmpfile
         [ -s $tmpfile ] || break
         printf "\033[31m"

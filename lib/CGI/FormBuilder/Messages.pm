@@ -54,7 +54,14 @@ sub new {
         }
     } elsif ($src =~ s/^:+//) {
         # A manual ":locale" specification ("auto" is handled by FB->new)
-        # In this case, assume the module has a COMPLETE set of messages
+        puke "Bad FormBuilder locale specification ':$src'" unless $src && $src ne '';
+
+        # load defaults from English, in case we can't find translators
+        # as we add new features
+        require CGI::FormBuilder::Messages::default;
+        %hash = CGI::FormBuilder::Messages::locale->messages;
+        my %h2 = ();
+
         # Note that the $src may be comma-separated, since this is the
         # way that browsers present it
         for (split /\s*,\s*/, $src) {
@@ -69,9 +76,13 @@ sub new {
             }
             next if $@;
             debug 2, "loading messages from $mod";
-            %hash = CGI::FormBuilder::Messages::locale->messages;
+            %h2 = CGI::FormBuilder::Messages::locale->messages;
+            last;
         }
-        belch "Could not load messages module '$src.pm': $@" unless %hash;
+        belch "Could not load messages module '$src.pm': $@" unless %h2;
+        while (my($k,$v) = each %h2) {
+          $hash{$k} = $v;
+        }
     } elsif ($src) {
         # filename, just *warn* on missing, and use defaults
         debug 2, "trying to open the '$src' file for messages";
@@ -115,7 +126,10 @@ sub message {
         }
     }
     $self->{$key} = shift if @_;
-    puke "No message string found for '$key'" unless exists $self->{$key};
+    unless (exists $self->{$key}) {
+        my @keys = sort keys %$self;
+        puke "No message string found for '$key' (keys: @keys)";
+    }
     if (ref $self->{$key} eq 'ARRAY') {
         # hack catch for external file
         $self->{$key} = "@{$self->{$key}}";

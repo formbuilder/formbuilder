@@ -27,6 +27,12 @@ our %MESSAGES = (
     js_invalid_password   => '- Invalid entry for the "%s" field',
     js_invalid_textarea   => '- Please fill in the "%s" field',
     js_invalid_file       => '- Invalid filename for the "%s" field',
+    js_invalid_number     => '- Invalid numerical entry for the "%s" field',
+    js_invalid_date       => '- Invalid date for the "%s" field',
+    js_invalid_url        => '- Invalid url for the "%s" field',
+    js_invalid_email      => '- Invalid email for the "%s" field',
+    js_invalid_time       => '- Invalid time for the "%s" field',
+   'js_invalid_datetime-local'    => '- Invalid date for the "%s" field',
     js_invalid_default    => '- Invalid entry for the "%s" field',
 
     js_noscript           => 'Please enable Javascript or use a newer browser.',

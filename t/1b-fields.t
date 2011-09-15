@@ -13,14 +13,18 @@ BEGIN { $VERSION = '3.07'; }
 
 use Test;
 use FindBin;
+use File::Find;
 
 # use a BEGIN block so we print our plan before CGI::FormBuilder is loaded
 my @pm;
 BEGIN { 
     unshift @INC, "$FindBin::Bin/../lib";
-    # try to load all the .pm's except templates from MANIFEST
-    open(M, "<MANIFEST") || warn "Can't open MANIFEST ($!) - skipping imports";
-    chomp(@pm = grep !/Template/, grep /\.pm$/, <M>);
+
+    # try to load all the messages .pm files
+    find(sub{
+      push @pm, $File::Find::name if -f $_ && $File::Find::name =~ m#Template/\w+\.pm$#;
+    }, "$FindBin::Bin/../lib");
+    die "Found 0 Template.pm files in $FindBin::Bin/../lib, this is wrong" if @pm == 0;
 
     my $numtests = 26 + @pm;
 
