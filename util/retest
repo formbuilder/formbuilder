@@ -8,39 +8,34 @@ onefile=/tmp/fb.1.html
 twofile=/tmp/fb.2.html
 cd `dirname $0`/.. || exit $?
 
-if [ $# -gt 0 ]; then
-    files="$*"
-else
-    files="t/*.t"
-fi
-
-for f in $files
+[ $# -eq 0 ] && set -- t/*.t
+for f
 do
     tnam=`basename "$f" | cut -d- -f1`
-    # have to infinitely loop so we get a chance to update files
-    # while true
-    # do
-        # clear files just in case
-        >$onefile
-        >$twofile
-        echo "$f";
-        PERL_TEST_DIFF='diff -u' ${PERL:-perl} -I$PWD/lib $f | \
-            awk '$1 == "not" && $2 == "ok" { print $3 }' >$tmpfile
-        [ -s $tmpfile ] || break
-        printf "\033[31m"
-        for tnum in `cat $tmpfile`
-        do
-            echo "Failed test $f [$tnum]"
-            testfile=`printf "t/$tnam-test%2.2d.html" $tnum`
-            if [ -f $testfile ]; then
-                echo "Update output file $testfile (y/n)? [y] \c"
-                read ans
-                [ ${ans:-y} = y ] && cp -fp $twofile $testfile
-                echo 
-            fi
-        done
+    # clear files just in case
+    >$onefile
+    >$twofile
+    PERL_TEST_DIFF='diff -u' ${PERL:-perl} -I$PWD/lib $f | \
+        awk '$1 == "not" && $2 == "ok" { print $3 }' >$tmpfile
+    if [ ! -s $tmpfile ]; then
+        printf "\033[32m"
+        echo "  OK $f"
         printf "\033[m"
-    # done
+        continue  # no errors
+    fi
+    for tnum in `cat $tmpfile`
+    do
+        printf "\033[31m"
+        echo "FAIL $f : $tnum"
+        testfile=`printf "t/$tnam-test%2.2d.html" $tnum`
+        if [ -f $testfile ]; then
+            echo "Update output file $testfile (y/n)? [y] \c"
+            read ans
+            [ ${ans:-y} = y ] && cp -fp $twofile $testfile
+            echo 
+        fi
+    done
+    printf "\033[m"
 done
 rm -f $tmpfile
 

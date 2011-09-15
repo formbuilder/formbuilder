@@ -16,18 +16,10 @@ use FindBin;
 use File::Find;
 
 # use a BEGIN block so we print our plan before CGI::FormBuilder is loaded
-my @pm;
 BEGIN { 
     unshift @INC, "$FindBin::Bin/../lib";
 
-    # try to load all the messages .pm files
-    find(sub{
-      push @pm, $File::Find::name if -f $_ && $File::Find::name =~ m#Template/\w+\.pm$#;
-    }, "$FindBin::Bin/../lib");
-    die "Found 0 Template.pm files in $FindBin::Bin/../lib, this is wrong" if @pm == 0;
-
-    my $numtests = 26 + @pm;
-
+    my $numtests = 26;
     plan tests => $numtests;
 
     # success if we said NOTEST
@@ -35,14 +27,6 @@ BEGIN {
         ok(1) for 1..$numtests;
         exit;
     }
-}
-
-my $n = 0;
-for (@pm) {
-    close(STDERR);
-    eval "package blah$n; require '$_'; package main;";
-    ok(!$@);
-    $n++;
 }
 
 # Fake a submission request
