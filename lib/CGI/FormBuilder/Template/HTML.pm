@@ -28,7 +28,7 @@ use CGI::FormBuilder::Util;
 use HTML::Template;
 use base 'HTML::Template';
 
-our $REVISION = do { (my $r='$Revision: 100 $') =~ s/\D+//g; $r };
+
 our $VERSION = '3.07';
 
 #

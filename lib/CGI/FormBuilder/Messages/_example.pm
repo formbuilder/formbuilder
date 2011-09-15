@@ -27,7 +27,7 @@ package CGI::FormBuilder::Messages::__LANG__;
 use strict;
 use utf8;
 
-our $REVISION = do { (my $r='$Revision: 100 $') =~ s/\D+//g; $r };
+
 our $VERSION = '3.07';
 
 # First, create a hash of messages for this language

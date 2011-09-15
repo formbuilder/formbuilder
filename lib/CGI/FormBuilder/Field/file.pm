@@ -16,7 +16,7 @@ use CGI::FormBuilder::Util;
 use CGI::FormBuilder::Field::text;
 use base 'CGI::FormBuilder::Field::text';
 
-our $REVISION = do { (my $r='$Revision: 100 $') =~ s/\D+//g; $r };
+
 our $VERSION = '3.07';
 
 *render = \&tag;

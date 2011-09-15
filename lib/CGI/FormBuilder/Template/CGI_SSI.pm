@@ -31,7 +31,7 @@ use CGI::FormBuilder::Util;
 use CGI::SSI;
 use base 'CGI::SSI';
 
-our $REVISION = do { (my $r='$Revision: 97 $') =~ s/\D+//g; $r };
+
 our $VERSION = '3.07';
 
 #

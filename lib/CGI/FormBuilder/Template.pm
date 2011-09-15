@@ -51,7 +51,7 @@ use strict;
 use warnings;
 no  warnings 'uninitialized';
 
-our $REVISION = do { (my $r='$Revision: 97 $') =~ s/\D+//g; $r };
+
 our $VERSION = '3.07';
 warn __PACKAGE__, " is not a real module, please read the docs\n"; 
 1;
