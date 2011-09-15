@@ -14,6 +14,7 @@ sub modcheck () {
          'Template           2.08  (for CGI::FormBuilder::Template::TT2)',
          'CGI::FastTemplate  1.09  (for CGI::FormBuilder::Template::Fast)',
          'CGI::SSI           0.92  (for CGI::FormBuilder::Template::CGI_SSI)',
+         'CGI::Session       3.95   (for CGI::FormBuilder::Multi)'
     ) {
         my($mod,$ver) = split;
         eval "use $mod $ver";
@@ -43,6 +44,9 @@ want to use one of these modules for templates. You can always install
 them later, FormBuilder will run without them.
 
 EOW
+        if ($ENV{STRICT_FB_TESTS}) {
+            die "Fatal: Missing optional module(s) and FormBuilder STRICT_FB_TESTS is set\n";
+        }
         sleep 2;
     }
     return {};      # hashref is expected by MakeMaker

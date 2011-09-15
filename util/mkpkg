@@ -11,8 +11,10 @@ pkg=CGI-FormBuilder
 pod=pod
 inc="Makefile.PL lib pod t"
 doc="README Changes MANIFEST INSTALL"
+export STRICT_FB_TESTS=1
 
-ver=${1:-`/usr/bin/perl -I"$PWD/lib" -M$mod -e 'print $'$mod::VERSION`} || exit $?
+perl=${PERL:-/usr/bin/perl}
+ver=${1:-`$perl -I"$PWD/lib" -M$mod -e 'print $'$mod::VERSION`} || exit $?
 echo "This will build a CPAN pkg for $mod v$ver"
 echo "Continue (y/n) [y]? \c"
 read ans
@@ -27,7 +29,7 @@ mkdir -p $tmppkg || exit 2
 export COPY_EXTENDED_ATTRIBUTES_DISABLE=true  # fucking Mac
 export COPYFILE_DISABLE=true
 cp -rp $inc $tmppkg
-cd $tmppkg || exit 3
+pushd $tmppkg || exit 3
 
 # create doc files from pods
 pod2text $pod/README.pod >README
@@ -44,10 +46,36 @@ gzip $pkg-$ver.tar || exit 5
 mv $pkg-$ver.tar.gz $pkg-$ver.tgz || exit 6
 [ -d $pwd/pkgs ] || mkdir -p $pwd/pkgs
 mv $pkg-$ver.tgz $pwd/pkgs
-cd /
+popd
 rm -rf $tmpdir
+pfile="$pwd/pkgs/$pkg-$ver.tgz"
 
-echo "Packaging complete!"
-echo "Don't forget:"
-echo "    git add $pwd/pkgs/$pkg-$ver.tgz"
+# Now, test it before saying ok
+printf "\033[35m"
+echo
+echo "+----------------------------------------+"
+echo "| Testing new package to see if it works |"
+echo "+----------------------------------------+"
+echo
+printf "\033[m"
+sleep 1
+testdir=`mktemp -d /tmp/mkpkg.XXXXXX`
+pushd $testdir
+tar zxf $pfile
+cd `basename $pfile .tgz`
+$perl Makefile.PL || fail=1
+[ "$fail" ] || make test
+if [ "$fail" ] || [ $# -ne 0 ]; then
+    printf "\033[31m"
+    echo "Package FAILED one or more tests"
+    echo "See test dir: $testdir"
+    printf "\033[m"
+else
+  printf "\033[32m"
+    echo "Packaging successful!"
+    printf "\033[m"
+    popd
+    rm -rf $testdir    
+fi
+echo "    $pfile"
 
