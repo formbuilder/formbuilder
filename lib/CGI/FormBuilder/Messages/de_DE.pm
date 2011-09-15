@@ -10,7 +10,7 @@ use strict;
 use utf8;
 
 our $REVISION = do { (my $r='$Revision: 100 $') =~ s/\D+//g; $r };
-our $VERSION = '3.06';
+our $VERSION = '3.07';
 
 # Simply create a hash of messages for this language
 our %MESSAGES = (
@@ -28,6 +28,12 @@ our %MESSAGES = (
     js_invalid_password   => '- Sie müssen einen gültigen Wert für das Feld "%s" angeben',
     js_invalid_textarea   => '- Sie müssen das Feld "%s" ausfüllen',
     js_invalid_file       => '- Sie müssen einen Dateinamen für das Feld "%s" angeben',
+    js_invalid_number     => '- Ungültiger nummerischer Wert für in "%s"',
+    js_invalid_date       => '- Ungültiges datum in "%s"',
+    js_invalid_url        => '- Ungültige oder fehlerhafte Url in "%s"',
+    js_invalid_email      => '- Ungültige Email-Adresse in "%s"',
+    js_invalid_time       => '- Ungültige Zeit in "%s"',
+   'js_invalid_datetime-local'    => '- Datum-Uhrzeit in "%s" ist ungültig',
     js_invalid_default    => '- Sie müssen einen gültigen Wert für das Feld "%s" angeben',
 
     js_noscript           => 'Bitte aktivieren Sie JavaScript '
