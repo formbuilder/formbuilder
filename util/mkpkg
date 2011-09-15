@@ -24,22 +24,18 @@ tmppkg=$tmpdir/$pkg-$ver
 mkdir -p $tmppkg || exit 2
 
 # use h to expand symlinks, since Perl won't install them 
-tar cBhvpf - `find $inc \( -type f -o -type l \) -print` | ( cd $tmppkg && tar xBpf - )
+export COPY_EXTENDED_ATTRIBUTES_DISABLE=true  # fucking Mac
+export COPYFILE_DISABLE=true
+cp -rp $inc $tmppkg
 cd $tmppkg || exit 3
 
-# If a beta build (ie, from trunk), screw with version number
-if [ $beta_build ]; then
-    sed "s/\(VERSION *= *'[^']*\)/\1$beta_build/" lib/CGI/FormBuilder/Util.pm >n || exit $?
-    mv n lib/CGI/FormBuilder/Util.pm || exit $?
-fi
-
-# create special files from pods
-touch MANIFEST
+# create doc files from pods
 pod2text $pod/README.pod >README
 pod2text $pod/INSTALL.pod >INSTALL
 pod2text $pod/Changes.pod >Changes
 
 # Generate MANIFEST
+touch MANIFEST  # need MANIFEST in MANIFEST
 find $inc $doc Makefile.PL -type f -print | sort >MANIFEST
 
 cd ..

@@ -9,7 +9,7 @@ use strict;
 our $TESTING = 1;
 our $DEBUG = $ENV{DEBUG} || 0;
 our $VERSION;
-BEGIN { $VERSION = '3.06'; }
+BEGIN { $VERSION = '3.07'; }
 
 use Test;
 use FindBin;
@@ -32,7 +32,7 @@ BEGIN {
 $ENV{REQUEST_METHOD} = 'GET';
 $ENV{QUERY_STRING} = '_submitted=1&submit=ClickMe&blank=&hiphop=Early+East+Coast';
 
-use CGI::FormBuilder 3.06;
+use CGI::FormBuilder 3.07;
 
 sub is_number {
     my $v = shift;
