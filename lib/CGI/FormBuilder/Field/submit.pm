@@ -19,7 +19,7 @@ use CGI::FormBuilder::Field::text;
 use base 'CGI::FormBuilder::Field::text';
 
 
-our $VERSION = '3.07';
+our $VERSION = '3.08';
 
 sub script { '' }
 

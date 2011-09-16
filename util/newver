@@ -58,3 +58,4 @@ do
         printf "\033[m"
     fi
 done
+echo

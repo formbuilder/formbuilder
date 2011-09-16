@@ -32,7 +32,7 @@ use CGI::FormBuilder::Util;
 use Text::Template;
 
 
-our $VERSION = '3.07';
+our $VERSION = '3.08';
 
 sub new {
     my $self  = shift;

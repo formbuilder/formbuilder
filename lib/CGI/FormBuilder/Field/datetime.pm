@@ -21,7 +21,7 @@ use CGI::FormBuilder::Field;
 use base 'CGI::FormBuilder::Field';
 
 
-our $VERSION = '3.07';
+our $VERSION = '3.08';
 
 sub script {
     my $self = shift;
