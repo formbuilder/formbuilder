@@ -11,6 +11,8 @@ use strict;
 use CGI::FormBuilder::Messages::base;
 use base 'CGI::FormBuilder::Messages::base';
 
+our $VERSION = '3.07';
+
 # Simply create a hash of messages for this language
 __PACKAGE__->define_messages({
     lang                  => 'en_US',

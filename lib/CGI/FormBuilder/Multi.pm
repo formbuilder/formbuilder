@@ -103,7 +103,6 @@ no  warnings 'uninitialized';
 use CGI::FormBuilder;
 use CGI::FormBuilder::Util;
 
-
 our $VERSION = '3.07';
 
 our %DEFAULT = (

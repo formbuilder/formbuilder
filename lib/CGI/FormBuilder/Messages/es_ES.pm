@@ -12,6 +12,8 @@ use utf8;
 use CGI::FormBuilder::Messages::default;
 use base 'CGI::FormBuilder::Messages::default';
 
+our $VERSION = '3.07';
+
 # First, create a hash of messages for this language
 __PACKAGE__->define_messages({
     lang                  => 'es_ES',
