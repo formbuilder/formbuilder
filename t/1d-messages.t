@@ -45,7 +45,7 @@ BEGIN {
       push @pm, $File::Find::name if -f $_ && $File::Find::name =~ m#Messages/[a-z]+_[A-Z]+\.pm$#;
     }, "$FindBin::Bin/../lib");
     die "Found 0 Messages.pm files in $FindBin::Bin/../lib, this is wrong" if @pm == 0;
-    #die "pm = @pm";
+    # die "pm = @pm";
 
     #
     # There are 34 keys, times the number of modules, plus one load of the module.
@@ -53,7 +53,7 @@ BEGIN {
     # the %messages hash (above) plus 4 charset/dtd checks
     #
     require CGI::FormBuilder::Messages::default;
-    my %hash = CGI::FormBuilder::Messages::locale->messages;
+    my %hash = CGI::FormBuilder::Messages::default->messages;
     my $numkeys = keys %hash;
     my $numtests = ($numkeys * @pm) + @pm + (keys(%messages) * 2) + 4;
 
@@ -122,7 +122,7 @@ EOD
 
 # Final test set is to just make sure we have all the keys for all modules
 require CGI::FormBuilder::Messages::default;
-my %need = CGI::FormBuilder::Messages::locale->messages;
+my %need = CGI::FormBuilder::Messages::default->messages;
 my @keys = keys %need;
 for my $pm (@pm) {
     my($lang) = $pm =~ /([a-z]+_[A-Z]+)/;
