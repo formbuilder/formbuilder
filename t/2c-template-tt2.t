@@ -8,6 +8,7 @@ use strict;
 
 our $TESTING = 1;
 our $DEBUG = $ENV{DEBUG} || 0;
+our $LOGNAME = $ENV{LOGNAME} || '';
 our $VERSION;
 BEGIN { $VERSION = '3.07'; }
 
@@ -129,7 +130,7 @@ for (@test) {
     my $ren = $SKIP ? '' : $form->render;
     my $ok = skip($SKIP, $ren, $out);
 
-    if (! $ok && $ENV{LOGNAME} eq 'nwiger') {
+    if (! $ok && $LOGNAME eq 'nwiger') {
         open(O, ">/tmp/fb.1.html");
         print O $out;
         close O;

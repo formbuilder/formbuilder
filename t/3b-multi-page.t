@@ -14,6 +14,7 @@ use strict;
 
 our $TESTING = 1;
 our $DEBUG = $ENV{DEBUG} || 0;
+our $LOGNAME = $ENV{LOGNAME} || '';
 our $VERSION;
 BEGIN { $VERSION = '3.07'; }
 
@@ -123,7 +124,7 @@ ok($form->field('replacement'), 'TRUE');  # 21
 
 # hack
 my $ren = $form->render;
-if ($ENV{LOGNAME} eq 'nwiger') {
+if ($LOGNAME eq 'nwiger') {
     open(REN, ">/tmp/fb.2.html");
     print REN $ren;
     close(REN);
@@ -180,3 +181,6 @@ skip($NOSESSION, $session->param('name'), 'Tater Salad');    #41
 
 skip($NOSESSION, $session->param('email'), undef);      #42
 
+# cleanup
+undef $session;
+system 'rm -f cgisess*';

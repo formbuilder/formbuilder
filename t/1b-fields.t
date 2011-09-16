@@ -8,6 +8,7 @@ use strict;
 
 our $TESTING = 1;
 our $DEBUG = $ENV{DEBUG} || 0;
+our $LOGNAME = $ENV{LOGNAME} || '';
 our $VERSION;
 BEGIN { $VERSION = '3.07'; }
 
