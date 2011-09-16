@@ -34,8 +34,8 @@ do
             [ ${ans:-y} = y ] && cp -fp $twofile $testfile
             echo 
         fi
+        printf "\033[m"
     done
-    printf "\033[m"
 done
 rm -f $tmpfile
 

@@ -1,9 +1,10 @@
-#!/bin/sh
+#!/bin/bash -p
 
 # Copyright (c) Nate Wiger http://nateware.com
 # newver - increment all version numbers accordingly.
 
 PATH=`dirname $0`:$PATH
+base=$(cd $(dirname $0)/.. && pwd)
 
 if [ $# -lt 1 ]; then
     cat <<EOF >&2
@@ -15,6 +16,14 @@ fi
 
 ver=$1
 
+printf "\033[35m"
+echo
+echo "+------------------------------+"
+echo "| Updating our \$VERSION = $ver |"
+echo "+------------------------------+"
+echo
+printf "\033[m"
+
 for f in `allmod` `alltests`
 do
     cp -fp $f $f.bak || continue
@@ -22,6 +31,30 @@ do
     sed -e "s/VERSION *=[^};]*/VERSION = '$ver'/" \
         -e "s/\(use  *CGI::FormBuilder\) .*/\1 $ver;/" $f.bak >$f || continue
     rm -f $f.bak
-    echo $f ok
+    echo $f
 done
 
+printf "\033[35m"
+echo
+echo "+---------------------------------+"
+echo '| Verifying our $VERSION loads ok |'
+echo "+---------------------------------+"
+echo
+printf "\033[m"
+
+for f in `allmod`
+do
+    mod=`echo "$f" | sed -e 's#lib/*##' -e 's#\.pm$##' -e 's#/#::#g'`
+    var=`echo "$mod" | sed -e 's#Messages::[a-z][a-z]*_[A-Z][A-Z]*#Messages::locale#' -e 's#Messages::_example#Messages::locale#'`
+    #echo perl -I$base/lib -M$mod -e 'print $'$var'::VERSION'
+    nv=`perl -I$base/lib -M$mod -e 'print $'$var'::VERSION'`
+    if [ "$nv" = "$ver" ]; then
+        printf "\033[32m"
+        echo "  OK $mod ($nv)"
+        printf "\033[m"
+    else
+        printf "\033[31m"
+        echo "FAIL $mod : $ver != $nv"
+        printf "\033[m"
+    fi
+done
