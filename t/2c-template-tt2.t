@@ -114,7 +114,8 @@ for (@test) {
                );
 
     # the ${mod} key twiddles fields
-    while(my($f,$o) = each %{$_->{mod} || {}}) {
+    for my $f ( sort keys %{$_->{mod} || {}} ) {
+        my $o = $_->{mod}{$f};
         $o->{name} = $f;
         $form->field(%$o);
     }
