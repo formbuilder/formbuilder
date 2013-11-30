@@ -18,7 +18,7 @@ use CGI::FormBuilder::Util;
 use CGI::FormBuilder::Field;
 use CGI::FormBuilder::Messages;
 
-our $VERSION = '3.08';
+our $VERSION = '3.09';
 
 our $AUTOLOAD;
 

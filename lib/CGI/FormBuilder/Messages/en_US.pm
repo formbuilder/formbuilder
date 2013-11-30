@@ -11,7 +11,7 @@ use strict;
 use CGI::FormBuilder::Messages::default;
 use base 'CGI::FormBuilder::Messages::default';
 
-our $VERSION = '3.08';
+our $VERSION = '3.09';
 
 # Inherit all messages from default (English) messages
 #

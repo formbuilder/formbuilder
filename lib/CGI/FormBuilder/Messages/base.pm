@@ -9,7 +9,7 @@ package CGI::FormBuilder::Messages::base;
 use strict;
 use utf8;
 
-our $VERSION = '3.08';
+our $VERSION = '3.09';
 our %MESSAGES = ();
 
 sub define_messages {
