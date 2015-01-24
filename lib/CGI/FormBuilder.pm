@@ -844,7 +844,8 @@ sub keepextras {
     } else {
         # Set to "1", so must go thru all params, skipping 
         # leading underscore fields and form fields
-        for my $p ($self->{params}->param()) {
+        my @values = $self->{params}->can('multi_param') ? $self->{params}->multi_param() : $self->{params}->param();
+        for my $p ($self->{params}->param) {
             next if $p =~ /^_/  || $self->{fieldrefs}{$p};
             push @keep, $p;
         }
