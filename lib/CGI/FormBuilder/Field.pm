@@ -612,11 +612,13 @@ sub jsfield {
                      ? qq[$jsfield == null ||]                     # must have or error
                      : qq[$jsfield != null && $jsfield != "" &&];  # only care if filled in
 
-    if ($pattern =~ m#^m?(\S)(.*)\1$#) {
+    if ($pattern =~ m#^m?(\S)(.*)\1(i)?$#) {
+        # Case-insensetive flag
+        my $case = $3 ? 'i' : '';
         # JavaScript regexp
         ($pattern = $2) =~ s/\\\//\//g;
         $pattern =~ s/\//\\\//g;
-        $jsfunc .= qq[${in}if ($notnull ! $jsfield.match(/$pattern/)) {\n];
+        $jsfunc .= qq[${in}if ($notnull ! $jsfield.match(/$pattern/$case)) {\n];
     }
     elsif (ref $pattern eq 'ARRAY') {
         # Must be w/i this set of values
