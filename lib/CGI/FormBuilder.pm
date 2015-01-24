@@ -844,7 +844,6 @@ sub keepextras {
     } else {
         # Set to "1", so must go thru all params, skipping 
         # leading underscore fields and form fields
-        my @values = $self->{params}->can('multi_param') ? $self->{params}->multi_param() : $self->{params}->param();
         for my $p ($self->{params}->param) {
             next if $p =~ /^_/  || $self->{fieldrefs}{$p};
             push @keep, $p;
@@ -856,8 +855,7 @@ sub keepextras {
 
     # Make sure to get all values
     for my $p (@keep) {
-        my @values = $self->{params}->can('multi_param') ? $self->{params}->multi_param($p) : $self->{params}->param($p);
-        for my $v (@values) {
+        for my $v ($self->{params}->param($p)) {
             debug 1, "keepextras: saving hidden param $p = $v";
             push @html, htmltag('input', name => $p, type => 'hidden', value => $v);
         }
