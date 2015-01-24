@@ -706,12 +706,13 @@ sub validate () {
         $atleastone++;
         debug 1, "$field: validating ($value) against pattern '$pattern'";
 
-        if ($pattern =~ m#^m(\S)(.*)\1$# || $pattern =~ m#^(/)(.*)\1$#) {
+        if ($pattern =~ m#^m(\S)(.*)\1(i)?$# || $pattern =~ m#^(/)(.*)\1(i)?$#) {
             # it be a regexp, handle / escaping
+            my $case = $3 ? 'i' : '';
             (my $tpat = $2) =~ s#\\/#/#g;
             $tpat =~ s#/#\\/#g;
-            debug 2, "$field: does '$value' =~ /$tpat/ ?";
-            unless ($value =~ /$tpat/) {
+            debug 2, "$field: does '$value' =~ /$tpat/$case ?";
+            unless (($case && $value =~ /$tpat/i) || $value =~ /$tpat/) {
                 $thisfail = ++$bad;
             }
         } elsif (ref $pattern eq 'ARRAY') {

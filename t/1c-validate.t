@@ -17,7 +17,7 @@ use FindBin;
 
 # use a BEGIN block so we print our plan before CGI::FormBuilder is loaded
 BEGIN { 
-    my $numtests = 13;
+    my $numtests = 15;
     unshift @INC, "$FindBin::Bin/../lib";
 
     plan tests => $numtests;
@@ -165,6 +165,24 @@ my @test = (
     {
         opt => { fields => [qw/required_empty/],
                  values => { required_empty => '' },
+                 required => 'ALL' },
+        pass => 0,
+    },
+
+    #14
+    {
+        opt => { fields => [qw/case_insensetive/],
+                 values => { case_insensetive => 'CaseInsensetive_StRiNG' },
+                 validate => { case_insensetive => '/^caseinsensetive_string$/i' },
+                 required => 'ALL' },
+        pass => 1,
+    },
+
+    #15
+    {
+        opt => { fields => [qw/case_sensetive/],
+                 values => { case_sensetive => 'CaseSensetive_StRiNG' },
+                 validate => { case_sensetive => '/^casesensetive_string$/' },
                  required => 'ALL' },
         pass => 0,
     },
