@@ -1,17 +1,22 @@
-NAME
-    Changes - Changes in FormBuilder 3.0, please also see the README
 
-COMPATIBILITY
-    FormBuilder 3.x should be completely compatible with FormBuilder 2.x,
-    with the singular exception that you can no longer use the shortcut
-    autoload style of getting to fields:
+3.10, 2016-08-17
 
-        $form->field(name => 'category', options => \@opt);
-        $form->category(options => \@opt);      # WRONG
+David Precious (BIGPRESH) taking over maintainership, kind thanks to Nate
+(NWIGER) for handing over the reins.
 
-    In order to allow the second form, you must specify the "fieldsubs"
-    option to "new()".
+[ BUG FIXES]
 
+  - Avoid CGI.pm warning if param() used in list context (GH-5, netangel)
+
+
+---
+
+David Precious (BIGPRESH) took over maintainership at this point.
+
+The current version on CPAN at that time was 3.09, but there were no changelog
+entries for versions between 3.06 and 3.09.
+
+---
 VERSION 3.06
     Maintenance release with a couple new features: support for "charset:
     utf8" in "Source::File", add_before_option/add_after_option c/o Victor
