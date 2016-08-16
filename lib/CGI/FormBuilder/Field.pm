@@ -50,7 +50,6 @@ no  warnings 'uninitialized';
 
 use CGI::FormBuilder::Util;
 
-
 our $VERSION = '3.09';
 our $AUTOLOAD;
 
@@ -189,7 +188,7 @@ sub cgi_value {
     my $self = shift;
     debug 2, "$self->{name}: called \$field->cgi_value";
     puke "Cannot set \$field->cgi_value manually" if @_;
-    if (my @v = $self->{_form}{params}->param($self->name)) {
+    if (my @v = $self->{_form}{params}->can('multi_param') ? $self->{_form}{params}->multi_param($self->name) : $self->{_form}{params}->param($self->name)) {
         for my $v (@v) {
             if ($self->other && $v eq $self->othername) {
                 debug 1, "$self->{name}: redoing value from _other field";
