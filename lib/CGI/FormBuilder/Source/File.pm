@@ -30,7 +30,7 @@ use 5.006; # or later
 use CGI::FormBuilder::Util;
 
 
-our $VERSION = '3.09';
+our $VERSION = '3.10';
 
 # Begin "real" code
 sub new {

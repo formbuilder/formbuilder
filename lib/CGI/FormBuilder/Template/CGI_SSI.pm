@@ -32,7 +32,7 @@ use CGI::SSI;
 use base 'CGI::SSI';
 
 
-our $VERSION = '3.09';
+our $VERSION = '3.10';
 
 #
 # For legacy reasons, and due to its somewhat odd interface, 

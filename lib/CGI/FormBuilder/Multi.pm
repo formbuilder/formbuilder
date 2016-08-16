@@ -103,7 +103,7 @@ no  warnings 'uninitialized';
 use CGI::FormBuilder;
 use CGI::FormBuilder::Util;
 
-our $VERSION = '3.09';
+our $VERSION = '3.10';
 
 our %DEFAULT = (
     pagename => '_page',
