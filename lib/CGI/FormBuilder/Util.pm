@@ -40,7 +40,7 @@ use Carp;
 # Don't "use" or it collides with our basename()
 require File::Basename;
 
-our $VERSION = '3.09';
+our $VERSION = '3.10';
 
 # Place functions you want to export by default in the
 # @EXPORT array. Any other functions can be requested
