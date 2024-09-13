@@ -102,18 +102,19 @@ my @test = (
 my $seq = $ARGV[0] || 1;
 
 # Cycle thru and try it out
-for (@test) {
+for my $test_item (@test) {
     my $form = CGI::FormBuilder->new(
                     debug => $DEBUG,
                     action => 'TEST',
                     title  => 'TEST',
-                    %{ $_->{opt} },
+                    %{ $test_item->{opt} },
                );
 
     # the ${mod} key twiddles fields
-    while(my($f,$o) = each %{$_->{mod} || {}}) {
-        $o->{name} = $f;
-        $form->field(%$o);
+    for my $field ( sort keys %{ $test_item->{mod} || {} } ) {
+        my $object = $test_item->{mod}->{$field};
+        $object->{name} = $field;
+        $form->field( %{ $object } );
     }
 
     #

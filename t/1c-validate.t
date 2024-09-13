@@ -174,11 +174,11 @@ my @test = (
 for my $t (@test) {
 
     my $form = CGI::FormBuilder->new( %{ $t->{opt} }, debug => $DEBUG );
-    while(my($f,$o) = each %{$t->{mod} || {}}) {
-        $o->{name} = $f;
-        $form->field(%$o);
+    for my $field ( sort keys %{ $t->{mod} || {} } ) {
+        my $object = $t->{mod}->{$field};
+        $object->{name} = $field;
+        $form->field( %{ $object } );
     }
-
     # just try to validate
     ok($form->validate, $t->{pass} || 0);
 }

@@ -70,8 +70,9 @@ BEGIN {
 my $locale = "fb_FAKE";
 my $messages = "messages.$locale";
 open(M, ">$messages") || warn "Can't write $messages: $!";
-while (my($k,$v) = each %messages) {
-    print M join(' ', $k, ref($v) ? @$v : $v), "\n";
+for my $k ( sort keys %messages ) {
+  my $v = $messages{$k};
+  print M join(' ', $k, ref($v) ? @$v : $v), "\n";
 }
 close(M);
 
@@ -123,7 +124,7 @@ EOD
 # Final test set is to just make sure we have all the keys for all modules
 require CGI::FormBuilder::Messages::default;
 my %need = CGI::FormBuilder::Messages::default->messages;
-my @keys = keys %need;
+my @keys = sort keys %need;
 for my $pm (@pm) {
     my($lang) = $pm =~ /([a-z]+_[A-Z]+)/;
     my $skip = $lang ? undef : "skip: Can't get language from $pm";
