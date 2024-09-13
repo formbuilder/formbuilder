@@ -1,3 +1,18 @@
+3.11, 2024-09-12
+
+Mark Hedges (MARKLE) fixed some RT bugs.
+
+RT# 79185   datetime field not working - added messages for 'datetime'
+            and 'datetime_local'
+RT# 81650   applied user-supplied patch (thanks) to use deterministic
+            field order
+RT# 83012   spanish message error - saved the message file with utf8
+            encoding (it was not)
+RT# 87785   ok whatever fixed the typos
+RT# 114018  used utf8::decode instead of Encode::decode(...) no diff in tests
+RT# 155443  use sprintf only if the message has a '%' for sprintfing
+RT# 155500  js escape single-quotes when validating list of options
+
 
 3.10, 2016-08-17
 

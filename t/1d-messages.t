@@ -10,7 +10,7 @@ our $TESTING = 1;
 our $DEBUG = $ENV{DEBUG} || 0;
 our $LOGNAME = $ENV{LOGNAME} || '';
 our $VERSION;
-BEGIN { $VERSION = '3.10'; }
+BEGIN { $VERSION = '3.11'; }
 
 use Test;
 use FindBin;
@@ -80,7 +80,7 @@ close(M);
 $ENV{REQUEST_METHOD} = 'GET';
 $ENV{QUERY_STRING}   = 'ticket=111&user=pete&replacement=TRUE&action=Unsubscribe&name=Pete+Peteson&email=pete%40peteson.com&extra=junk&_submitted=1&blank=&two=&two=';
 
-use CGI::FormBuilder 3.10;
+use CGI::FormBuilder 3.11;
 
 # Now manually try a whole bunch of things
 my $hash = CGI::FormBuilder->new(

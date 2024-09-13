@@ -31,7 +31,7 @@ use CGI::FormBuilder::Util;
 use utf8;
 
 
-our $VERSION = '3.10';
+our $VERSION = '3.11';
 
 # Begin "real" code
 sub new {

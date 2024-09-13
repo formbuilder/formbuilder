@@ -12,7 +12,7 @@ use utf8;
 use CGI::FormBuilder::Messages::base;
 use base 'CGI::FormBuilder::Messages::base';
 
-our $VERSION = '3.10';
+our $VERSION = '3.11';
 
 # Default messages (US English)
 __PACKAGE__->define_messages({
