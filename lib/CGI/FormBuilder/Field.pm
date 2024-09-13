@@ -620,9 +620,14 @@ sub jsfield {
     }
     elsif (ref $pattern eq 'ARRAY') {
         # Must be w/i this set of values
-        # Can you figure out how this piece of Perl works? No, seriously, I forgot.
+        # escape single-quotes in option values
+        my @options = @{$pattern};  # clone values, don't modify original
+        s{'}{\\'}g for @options;
+        # the third argument to jsfield,
+        # then check it is not null or empty string,
+        # then make sure it is one of the provided options
         $jsfunc .= qq[${in}if ($notnull ($jsfield != ']
-                 . join("' && $jsfield != '", @{$pattern}) . "')) {\n";
+                 . join("' && $jsfield != '", @options) . "')) {\n";
     }
     elsif (ref $pattern eq 'CODE' || $pattern eq 'VALUE' || ($self->required && ! $pattern)) {
         # Not null (for required sub refs, just check for a value)
