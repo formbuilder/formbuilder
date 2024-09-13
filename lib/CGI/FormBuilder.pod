@@ -2056,7 +2056,7 @@ up a couple basic form features:
         font-style: italic;
     }
 
-Of course, if you're familiar with CSS, you know alot more is possible.
+Of course, if you're familiar with CSS, you know a lot more is possible.
 Also, you can mess with all the id's (if you name your forms) to
 manipulate fields more exactly.
 

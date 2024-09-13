@@ -103,7 +103,7 @@ sub tag {
     push @opt, [$self->othername, $self->{_form}{messages}->form_other_default]
              if $self->other;
 
-	$attr->{type}='datetime-local'; # Special wegen hyphen :-(
+	$attr->{type}='datetime-local'; # Special because hyphen :-(
     debug 2, "$self->{name}: generating $attr->{type} input type";
 
     # We iterate over each value - this is the only reliable

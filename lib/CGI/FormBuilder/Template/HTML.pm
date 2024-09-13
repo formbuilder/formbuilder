@@ -383,7 +383,7 @@ When the template is rendered, the result would be something like this:
 
     </table>
 
-When the form was then sumbmitted, you would access the values just
+When the form was then submitted, you would access the values just
 like any other field:
 
     if ($form->field('mailopt')) {

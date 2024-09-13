@@ -255,7 +255,7 @@ sub htmlattr ($;@) {
         $html{$key} = $val;
     }
     # "double-name" fields with an id for easier DOM scripting
-    # do not override explictly set id attributes
+    # do not override explicitly set id attributes
     $html{id} = tovar($html{name}) if exists $html{name} and not exists $html{id};
 
     return wantarray ? %html : \%html; 
