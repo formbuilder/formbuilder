@@ -36,6 +36,8 @@ __PACKAGE__->define_messages({
     js_invalid_email      => '- Ungültige Email-Adresse in "%s"',
     js_invalid_time       => '- Ungültige Zeit in "%s"',
    'js_invalid_datetime-local'    => '- Datum-Uhrzeit in "%s" ist ungültig',
+    js_invalid_datetime_local     => '- Datum-Uhrzeit in "%s" ist ungültig',
+    js_invalid_datetime   => '- Datum-Uhrzeit in "%s" ist ungültig',
     js_invalid_default    => '- Sie müssen einen gültigen Wert für das Feld "%s" angeben',
 
     js_noscript           => 'Bitte aktivieren Sie JavaScript '
