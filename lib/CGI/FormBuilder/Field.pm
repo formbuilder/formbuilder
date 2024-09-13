@@ -509,8 +509,9 @@ sub message {
         my $type = shift || $self->type;
         my $et = 'form_invalid_' . ($type eq 'text' ? 'input' : $type);
         $et    = 'form_invalid_input' if $self->other;     # other fields assume text
-        $mess  = sprintf(($self->{_form}{messages}->$et
-                    || $self->{_form}{messages}->form_invalid_default), $self->label);
+        $mess  = $self->{_form}{messages}->$et
+                 || $self->{_form}{messages}->form_invalid_default;
+        $mess  = sprintf($mess, $self->label) if $mess =~ /%/;
     }
     return $self->{_form}{stylesheet}
            ? qq(<span class="$self->{_form}{styleclass}_message">$mess</span>)

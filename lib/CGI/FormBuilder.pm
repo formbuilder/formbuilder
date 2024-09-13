@@ -1150,8 +1150,12 @@ sub text {
                                              $inv,
                                              $self->invalid_tag).'</p>' if $inv;
 
-        return $self->{text} .'<p>'. sprintf($self->{messages}->form_required_text,
-                                             $self->required_tag).'</p>' if $req;
+        if ($req) {
+            my $form_required_text = $self->{messages}->form_required_text;
+            $form_required_text = sprintf($form_required_text, $self->required_tag)
+                if $form_required_text =~ /%/;
+            return $self->{text} ."<p>$form_required_text</p>";
+        }
     }
     return $self->{text};
 }
