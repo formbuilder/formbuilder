@@ -1,1 +1,8 @@
 pkgs/
+MYMETA.json
+MYMETA.yml
+Makefile
+blib/
+.*.swp
+pm_to_blib
+Makefile.old
