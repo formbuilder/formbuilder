@@ -2724,13 +2724,12 @@ L<CGI::FormBuilder::Field>, L<CGI::FormBuilder::Util>,
 L<CGI::FormBuilder::Util>, L<HTML::Template>, L<Text::Template>
 L<CGI::FastTemplate>
 
-=head1 REVISION
-
-$Id: FormBuilder.pm 65 2006-09-07 18:11:43Z nwiger $
-
 =head1 AUTHOR
 
 Copyright (c) L<Nate Wiger|http://nateware.com>. All Rights Reserved.
+
+Nate Wiger is the original author; he kindly passed maintainership over
+to David Precious (C<BIGPRESH>) in 2016.
 
 This module is free software; you may copy this under the terms of
 the GNU General Public License, or the Artistic License, copies of
