@@ -1,4 +1,12 @@
-3.11, 2024-09-12
+
+3.20, 2024-09-18
+Promoting 3.11 TRIAL release to stable
+(Mark Hedges (MARKLE)'s super bugfixing release)
+
+Supporting regex modifiers in validation regexes (also MARKLE)
+
+
+3.11, 2024-09-13 (TRIAL RELEASE)
 
 Mark Hedges (MARKLE) fixed some RT bugs.
 

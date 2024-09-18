@@ -44,7 +44,7 @@ use CGI::FastTemplate;
 use base 'CGI::FastTemplate';
 
 
-our $VERSION = '3.11';
+our $VERSION = '3.20';
 
 sub new {
     my $self  = shift;

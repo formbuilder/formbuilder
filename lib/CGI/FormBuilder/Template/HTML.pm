@@ -29,7 +29,7 @@ use HTML::Template;
 use base 'HTML::Template';
 
 
-our $VERSION = '3.11';
+our $VERSION = '3.20';
 
 #
 # For legacy reasons, and due to its somewhat odd interface, 

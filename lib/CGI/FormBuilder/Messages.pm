@@ -28,7 +28,7 @@ no  warnings 'uninitialized';
 
 use CGI::FormBuilder::Util;
 
-our $VERSION = '3.11';
+our $VERSION = '3.20';
 our $AUTOLOAD;
 
 sub new {

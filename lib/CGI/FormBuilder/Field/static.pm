@@ -19,7 +19,7 @@ use CGI::FormBuilder::Field;
 use base 'CGI::FormBuilder::Field';
 
 
-our $VERSION = '3.11';
+our $VERSION = '3.20';
 
 sub script {
     return '';        # static fields get no messages
