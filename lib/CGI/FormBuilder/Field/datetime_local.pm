@@ -130,7 +130,6 @@ sub tag {
         # setup the value, convert standard if necessary
         if ($value=~ m/([0-9]{4,4}-[0-9]{2,2}-[0-9]{2,2}) ([0-9]{2,2}[:-][0-9]{2,2}[:-][0-9]{2,2})/){
 			$value=$1 . 'T' . $2;
-			warn "### new value: $value",
 		}
         $attr->{value} = $value;      # override
         delete $attr->{value} unless defined $value;
